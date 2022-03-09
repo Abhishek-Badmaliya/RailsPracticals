@@ -43,7 +43,7 @@ class ProductsController < ApplicationController
       flash[:notice]="Product is Deleted!"
       redirct_to_root_path
     else
-      flash[;error]="Deletion Operation Failed!"
+      flash[;error]="Deletion Operation Failed!" 
       render:edit
     end
   end
