@@ -1,13 +1,29 @@
 <!DOCTYPE html>   
 <html>   
+<style>
+table, th, td {
+  border:2px solid black;
+}
+th, td {
+  background-color: #96D4D4;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+  padding-right: 40px;
+  font-size:20px;
+}
+body {
+  background-color:lightgray;
+}
+</style>
 <body>   
  <div class="container">   
-    <h2>Product List</h2>   
+    <u><h2>Products</h2></u>
       <div>   
         <%= link_to 'Add Product', new_product_path %>   
       </div>   
       <br>   
-    <table border="1">   
+    <table style="width:100%" >   
       <thead>   
         <tr>   
           <th>Name</th>   
@@ -25,10 +41,11 @@
               <div>   
                <td>   
                 <%= link_to 'Show', product_path(product) %>   
+                
                 <%= link_to 'Edit', edit_product_path(product) %>   
                 <%= button_to 'Delete', product_path(product), method: :delete %>   
-              </div>   
-            </td>   
+              </td   
+            </div>   
           </tr>   
       <% end %>   
       </tbody>   
