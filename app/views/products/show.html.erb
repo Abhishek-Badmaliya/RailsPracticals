@@ -1,0 +1,35 @@
+<html>
+<style>
+  body {
+    text-align:left;
+    padding-top: 10px;
+    background-color:lightgray;
+    font-size:20px;
+  }
+</style>
+<body>
+  <div class="container">
+
+    <u><h2>Product Details</h2></u>
+
+    <div>
+      <label>Product Name: </label>
+        <%=@product.name%>  
+    </div>
+
+    <div>
+      <label>Product Price: </label>
+      <%=@product.price%>
+    </div>
+
+    <div>
+      <label>Description: </label>
+      <%=@product.short_description%>
+    </div>
+
+    <div>
+      <%=link_to'Back',{controller:'products',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>
