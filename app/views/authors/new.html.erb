@@ -1,0 +1,44 @@
+<html>
+<style>
+  body {
+    text-align:left;
+    padding-top: 10px;
+    background-color:lightgray;
+    font-size:20px;
+  }
+</style>
+<body>
+  <div class="container">
+    <%= form_for @author, url: {action: :create} do |f| %>
+      <div>
+        <u><h2>Add Author</h2></u>
+      </div>
+      <div>
+        <p>
+          <%= "<div>#{@author.errors.full_messages.first}</div>".html_safe if @author.errors.any? %>
+          <div>
+            <label>Author First Name</label>
+            <%= f.text_field :first_name %>
+          </div>
+          <div>
+            <label>Author Last Name</label>
+            <%= f.text_field :last_name %>
+          </div>
+          <div>
+            <label>Author Date of Birth</label>
+            <%= f.date_field :dob %>
+          </div>
+          <div>
+            <label>Author Email</label>
+            <%= f.text_field :email %>
+          </div>
+        </p>
+      </div>
+      <div>
+        <%= link_to 'Back', { controller: 'authors', action: 'index'} %>
+        <%= f.submit 'Create Author' %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

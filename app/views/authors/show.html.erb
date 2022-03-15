@@ -1,0 +1,39 @@
+<html>
+<style>
+  body {
+    text-align:left;
+    padding-top: 10px;
+    background-color:lightgray;
+    font-size:20px;
+  }
+</style>
+<body>
+  <div class="container">
+    <u><h2>Author Details</h2></u>
+    <div>
+      <label>Author First Name: </label>
+        <%=@author.first_name%>  
+    </div>
+    <div>
+      <label>Author Last Name: </label>
+        <%=@author.last_name%>  
+    </div>
+    <div>
+      <label>Author Date of Birth: </label>
+        <%=@author.dob%>  
+    </div>
+    <div>
+      <label>Author Email: </label>
+      <%=@author.email%>
+    </div>
+    <div>
+      <% @author.books.each do |f| %>
+      <span><b>Book Id:</b></span> <%= f.id %><br><span><b> Book Name:</b></span> <%= f.name %>
+      <% end %>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'authors',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>

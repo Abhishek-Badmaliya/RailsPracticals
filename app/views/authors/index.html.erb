@@ -18,31 +18,35 @@
 </style>
 <body>
   <div class="container">
-      <u><h2>Books</h2></u>
+      <u><h2>Authors</h2></u>
       
       <div>
-        <%= link_to 'Add Book', new_book_path %>
+        <%= link_to 'Add Author', new_author_path %>
       </div><br>
 
       <table style="width:100%" >
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Price</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birthdate</th>
+            <th>Email</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-        <% @books.each do |book| %>
+        <% @authors.each do |author| %>
           <tr>
-            <td><%= book.name %></td>
-            <td><%= book.price %></td>
+            <td><%= author.first_name %></td>
+            <td><%= author.last_name %></td>
+            <td><%= author.dob %></td>
+            <td><%= author.email %></td>
             <div>
               <td>
-                <%= link_to 'Show', book_path(book) %>
+                <%= link_to 'Show', author_path(author) %>
                   
-                <%= link_to 'Edit', edit_book_path(book) %>
-                <%= button_to 'Delete', book_path(book), method: :delete %>
+                <%= link_to 'Edit', edit_author_path(author) %>
+                <%= button_to 'Delete', author_path(author), method: :delete %>
               </td>
             </div>
           </tr>

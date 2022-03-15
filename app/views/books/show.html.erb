@@ -1,2 +1,26 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<html>
+<style>
+  body {
+    text-align:left;
+    padding-top: 10px;
+    background-color:lightgray;
+    font-size:20px;
+  }
+</style>
+<body>
+  <div class="container">
+    <u><h2>Book Details</h2></u>
+    <div>
+      <label>Book Name: </label>
+        <%=@book.name%>  
+    </div>
+    <div>
+      <label>Book Price: </label>
+      <%=@book.price%>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'books',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>
