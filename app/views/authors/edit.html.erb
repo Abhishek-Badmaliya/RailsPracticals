@@ -1,0 +1,35 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b3">
+  <div class="container">
+    <%= form_for @author, url: {action: :update} do |f| %>
+      <u><h2>Edit Author</h2></u>
+      <%= "<div>#{@author.errors.full_messages.first}</div>".html_safe if @author.errors.any? %>
+        <p>
+          <div>
+            <label>Author First Name</label>
+            <%= f.text_field :first_name %>
+          </div>
+          <div>
+            <label>Author Last Name</label>
+            <%= f.text_field :last_name %>
+          <div>
+            <label>Author Date of Birth</label>
+            <%= f.text_field :dob %>
+          </div>
+          </div>
+          <div>
+            <label>Author Email</label>
+            <%= f.text_field :email %>
+          <div>
+        </p>
+        <div>
+          <%= link_to 'Back', { controller: 'authors', action: 'index'} %>
+          <%= f.submit 'Update Author' %>   
+        </div>
+    <% end %>
+  </div>
+</body>
+</html>

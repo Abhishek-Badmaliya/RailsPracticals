@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b">
+  <div class="container">
+      <u><h2>Authors</h2></u>
+      
+      <div>
+        <%= link_to 'Add Author', new_author_path %>
+      </div><br>
+
+      <table class="tabl" >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Birthdate</th>
+            <th>Email</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @authors.each do |author| %>
+          <tr>
+            <td><%= author.first_name %></td>
+            <td><%= author.last_name %></td>
+            <td><%= author.dob %></td>
+            <td><%= author.email %></td>
+            <div>
+              <td>
+                <%= link_to 'Show', author_path(author) %>
+                  
+                <%= link_to 'Edit', edit_author_path(author) %>
+                <%= button_to 'Delete', author_path(author), method: :delete %>
+              </td>
+            </div>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </div>
+</body>
+</html>

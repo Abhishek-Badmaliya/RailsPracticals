@@ -1,0 +1,34 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b4">
+  <div class="container">
+    <%= form_for @book do |f| %>
+      <div>
+        <u><h2>Add Book</h2></u>
+      </div>
+      <div>
+        <p>
+          <div>
+            <label>Book Name</label>
+            <%= f.text_field :name %>
+          </div>
+          <div>
+            <label>Author Name</label>
+            <%= f.select :author_id, Author.all.map{|p| [p.first_name + " " + p.last_name , p.id ]}%>
+          </div>
+          <div>
+            <label>Price</label>
+            <%= f.text_field :price %>
+          </div>
+        </p>
+      </div>
+      <div>
+        <%= link_to 'Back', { controller: 'books', action: 'index'} %>
+        <%= f.submit 'Create Book' %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

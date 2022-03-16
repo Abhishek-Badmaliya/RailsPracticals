@@ -1,0 +1,24 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b5">
+  <div class="container">
+    <u><h2>Book Details</h2></u>
+    <div>
+      <label>Book Name: </label>
+        <%=@book.name%>  
+    </div>
+    <div>
+      <label>Book Price: </label>
+      <%=@book.price%>
+    </div>
+    <div>
+      <span><b>Author Id:</b></span> <%= @book.author.id %><br><span><b> Author Name:</b></span> <%= @book.author.first_name %>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'books',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>
