@@ -8,7 +8,7 @@ class AddDataInAuthor < ActiveRecord::Migration[7.0]
         Author.create(first_name:"Chitrak", last_name: "Bhatt", dob: "09 Aug 2000", email: "chitrak@gmail.com")
         Author.create(first_name:"Keyur", last_name: "Patel", dob: "1 Aug 2001", email: "keyur@gmail.com")
       end
-      dir.up do
+      dir.down do
         Author.find_by(first_name:"Abhishek").destroy
         Author.find_by(first_name:"Chirag").destroy
         Author.find_by(first_name:"Khanjan").destroy

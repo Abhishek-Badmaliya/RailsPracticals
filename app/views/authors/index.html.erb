@@ -1,22 +1,9 @@
 <!DOCTYPE html>
 <html>
-<style>
-  table, th, td {
-    border:2px solid black;
-  }
-  th, td {
-    background-color: #96D4D4;
-    padding-top: 10px;
-    padding-bottom: 20px;
-    padding-left: 30px;
-    padding-right: 40px;
-    font-size:20px;
-  }
-  body {
-    background-color:lightgray;
-  }
-</style>
-<body>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b">
   <div class="container">
       <u><h2>Authors</h2></u>
       
@@ -24,7 +11,7 @@
         <%= link_to 'Add Author', new_author_path %>
       </div><br>
 
-      <table style="width:100%" >
+      <table class="tabl" >
         <thead>
           <tr>
             <th>First Name</th>

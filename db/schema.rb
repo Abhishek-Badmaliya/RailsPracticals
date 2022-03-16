@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_121301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "author_id"
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "image_tables", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_15_121301) do
     t.datetime "updated_at", null: false
     t.string "imageable_type"
     t.integer "imageable_id"
+    t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
   create_table "products", force: :cascade do |t|
