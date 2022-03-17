@@ -1,0 +1,35 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b3">
+  <div class="container">
+    <%= form_for @student, url: {action: :update} do |f| %>
+      <u><h2>Edit Student</h2></u>
+      <%= "<div>#{@student.errors.full_messages.first}</div>".html_safe if @student.errors.any? %>
+        <p>
+          <div>
+            <label>Student First Name</label>
+            <%= f.text_field :first_name %>
+          </div>
+          <div>
+            <label>Student Last Name</label>
+            <%= f.text_field :last_name %>
+          <div>
+            <label>Student Date of Birth</label>
+            <%= f.text_field :stu_dob %>
+          </div>
+          </div>
+          <div>
+            <label>Student Department</label>
+            <%= f.text_field :dept %>
+          <div>
+        </p>
+        <div>
+          <%= link_to 'Back', { controller: 'students', action: 'index'} %>
+          <%= f.submit 'Update Student' %>   
+        </div>
+    <% end %>
+  </div>
+</body>
+</html>

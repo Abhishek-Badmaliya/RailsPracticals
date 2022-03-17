@@ -1,0 +1,29 @@
+<html>
+<head>
+  <link rel="styles.css">
+<head>
+<body id="b2">
+  <div class="container">
+    <u><h2>Student Details</h2></u>
+    <div>
+      <label>First Name: </label>
+      <%=@student.first_name%>  
+    </div>
+    <div>
+      <label>Last Name: </label>
+      <%=@student.last_name%>  
+    </div>
+    <div>
+      <label>Date of Birth: </label>
+      <%=@student.stu_dob%>  
+    </div>
+    <div>
+      <label>Department : </label>
+      <%=@student.dept%>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'students',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>
