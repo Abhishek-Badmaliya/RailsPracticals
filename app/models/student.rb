@@ -10,6 +10,6 @@ class Student < ApplicationRecord
  
   validates :first_name, :last_name, :stu_dob, presence: true
   validates :terms_of_usage, acceptance: { message: ': You cannot proceed without accepting Terms of Usage' }
-  validates :dept, :inclusion => { :in => %w(IT CE), :message => "can't be %{value}" }
+  validates :dept, :inclusion => { :in => %w(IT CS), :message => "can't be %{value}" }
   
 end

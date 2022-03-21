@@ -4,7 +4,7 @@
 </head>
 <body id="b3">
   <div class="container">
-    <%= form_for @faculty, url: {action: :update} do |f| %>
+    <%= form_for @faculty, data: { turbo: false }, url: {action: :update} do |f| %>
       <u><h2>Edit Faculty</h2></u>
       <%= "<div>#{@faculty.errors.full_messages.first}</div>".html_safe if @faculty.errors.any? %>
         <p>

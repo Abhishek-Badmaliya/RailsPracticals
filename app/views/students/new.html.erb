@@ -4,7 +4,7 @@
 </head>
 <body id="b1">
   <div class="container">
-    <%= form_for @student, url: {action: :create} do |f| %>
+    <%= form_for @student, data: { turbo: false }, url: {action: :create} do |f| %>
       <div>
         <u><h2>Add Student Details</h2></u>
       </div>
@@ -26,6 +26,10 @@
           <div>
             <label>Department : </label>
             <%= f.text_field :dept%>
+          </div>
+          <div>
+            <%= f.check_box :terms_of_usage%>
+            <label>I agreed with terms of usage.</label>
           </div>
         </p>
       </div>

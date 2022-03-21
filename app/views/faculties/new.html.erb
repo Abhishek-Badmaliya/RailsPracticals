@@ -4,7 +4,7 @@
 </head>
 <body id="b1">
   <div class="container">
-    <%= form_for @faculty, url: {action: :create} do |f| %>
+    <%= form_for @faculty, data: { turbo: false }, url: {action: :create} do |f| %>
       <div>
         <u><h2>Add Faculty Details</h2></u>
       </div>

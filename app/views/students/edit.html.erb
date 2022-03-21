@@ -4,7 +4,7 @@
 </head>
 <body id="b3">
   <div class="container">
-    <%= form_for @student, url: {action: :update} do |f| %>
+    <%= form_for @student, data: { turbo: false }, url: {action: :update} do |f| %>
       <u><h2>Edit Student</h2></u>
       <%= "<div>#{@student.errors.full_messages.first}</div>".html_safe if @student.errors.any? %>
         <p>
@@ -24,6 +24,10 @@
             <label>Student Department</label>
             <%= f.text_field :dept %>
           <div>
+          <div>
+            <%= f.check_box :terms_of_usage%>
+            <label>I agreed with terms of usage.</label>
+          </div>
         </p>
         <div>
           <%= link_to 'Back', { controller: 'students', action: 'index'} %>
