@@ -11,8 +11,6 @@ class Faculty < ApplicationRecord
   validates:first_name, :last_name, :fac_dob, :contact, presence:true
   validates:contact,numericality: { only_integer:true }, length:{is:10}, uniqueness:{case_sensitive:false}
  
-  VALID_EMAIL_REGEX=/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
- 
   validates:email, presence:true, uniqueness:{case_sensitive:false}
   validates:desig,:inclusion => {:in => %w(Ass.Prof Prof),:message => "can't be %{value}" }, :exclusion => { :in => %w(HOD Sr.Prof.),:message => "%{value} is reserved." }
 
