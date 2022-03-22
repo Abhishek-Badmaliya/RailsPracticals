@@ -1,0 +1,37 @@
+<html>
+<head>
+  <link rel="styles.css">
+<head>
+<body id="b2">
+  <div class="container">
+    <u><h2>Faculty Details</h2></u>
+    <div>
+      <label>First Name: </label>
+      <%=@faculty.first_name%>  
+    </div>
+    <div>
+      <label>Last Name: </label>
+      <%=@faculty.last_name%>  
+    </div>
+    <div>
+      <label>Date of Birth: </label>
+      <%=@faculty.fac_dob%>  
+    </div>
+    <div>
+    <label>Contact Number: </label>
+      <%=@faculty.contact%>  
+    </div>
+    <div>
+    <label>Email: </label>
+      <%=@faculty.email%>  
+    </div>
+    <div>
+      <label>Designation: </label>
+      <%=@faculty.desig%>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'faculties',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>

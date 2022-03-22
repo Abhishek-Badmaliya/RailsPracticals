@@ -1,0 +1,43 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b1">
+  <div class="container">
+    <%= form_for @student, data: { turbo: false }, url: {action: :create} do |f| %>
+      <div>
+        <u><h2>Add Student Details</h2></u>
+      </div>
+      <div>
+        <p>
+          <%= "<div>#{@student.errors.full_messages.first}</div>".html_safe if @student.errors.any? %>
+          <div>
+            <label>Student First Name</label>
+            <%= f.text_field :first_name %>
+          </div>
+          <div>
+            <label>Student Last Name</label>
+            <%= f.text_field :last_name %>
+          </div>
+          <div>
+            <label>Student Date of Birth</label>
+            <%= f.date_field :stu_dob %>
+          </div>
+          <div>
+            <label>Department : </label>
+            <%= f.text_field :dept%>
+          </div>
+          <div>
+            <%= f.check_box :terms_of_usage%>
+            <label>I agreed with terms of usage.</label>
+          </div>
+        </p>
+      </div>
+      <div>
+        <%= link_to 'Back', { controller: 'students', action: 'index'} %>
+        <%= f.submit 'Create Student' %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

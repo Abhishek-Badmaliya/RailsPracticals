@@ -1,0 +1,43 @@
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b3">
+  <div class="container">
+    <%= form_for @faculty, data: { turbo: false }, url: {action: :update} do |f| %>
+      <u><h2>Edit Faculty</h2></u>
+      <%= "<div>#{@faculty.errors.full_messages.first}</div>".html_safe if @faculty.errors.any? %>
+        <p>
+          <div>
+            <label>Faculty First Name</label>
+            <%= f.text_field :first_name %>
+          </div>
+          <div>
+            <label>Faculty Last Name</label>
+            <%= f.text_field :last_name %>
+          <div>
+            <label>Faculty Date of Birth</label>
+            <%= f.date_field :fac_dob %>
+          </div>
+          </div>
+          <div>
+            <label>Faculty Contact Number</label>
+            <%= f.text_field :contact %>
+          </div>
+          <div>
+            <label>Faculty Email</label>
+            <%= f.text_field :email %>
+          </div>
+          <div>
+            <label>Faculty Designation</label>
+            <%= f.text_field :desig %>
+          <div>
+        </p>
+        <div>
+          <%= link_to 'Back', { controller: 'faculties', action: 'index'} %>
+          <%= f.submit 'Update Faculty' %>   
+        </div>
+    <% end %>
+  </div>
+</body>
+</html>
