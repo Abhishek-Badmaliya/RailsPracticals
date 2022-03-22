@@ -33,7 +33,7 @@ class Student < ApplicationRecord
   end
 
   before_save do |student|
-    puts "An object is not saved yet!"
+    puts "An object is not saved yet !"
   end
 
   after_save do |student|
