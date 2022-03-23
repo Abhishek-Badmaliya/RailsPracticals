@@ -14,34 +14,55 @@ class Student < ApplicationRecord
 
   #it's called whenever created new or load the record
   after_initialize do |student|
-    puts "An object initialized !"
+    puts "The student's object has been initialized !"
   end
 
   #it's called whenever database record is loaded
   after_find do |student|
-    puts "An object found !"
+    puts "The student's object has been founded !"
   end
 
   #it's called whenever object is touched
   after_touch do |student|
-    puts "An object touched !"
+    puts "The student's object has been touched !"
   end
 
-  before_validation :remove_whitespaces
-  def remove_whitespaces
-    first_name.strip!
-  end
-
+  #it's called before the transaction begin 
   before_save do |student|
-    puts "An object is not saved yet !"
+    puts "The student's object is not saved yet !"
   end
 
+  #it's called when record updation operation completed
   after_save do |student|
-    puts "An object is saved successfully !"
+    puts "The student's object has been saved successfully !"
   end
 
-  after_save :set_msge
-  def set_msge
-    puts "An object is saved successfully !"
+  #it's called when new record is create
+  after_create do |student|
+    puts "The student's object has been created !"
+  end
+
+  #it's called when object record is update
+  after_update do |student|
+    puts "The student's object has been updated !"
+  end
+
+  #it's called when object is destroy
+  after_destroy do |student|
+    puts "The student's object has been destroyed !"
+  end
+
+  before_validation :check_dob, if: Proc.new { |student| student.errors[:stu_dob] == []}
+
+  def check_dob
+    puts "Student's dob is valid!"
+  end
+
+  #it's called after destroy method
+  after_destroy :first_name_invalid,
+    if: Proc.new { |student| student.first_name.downcase == "abcd" or student.first_name.downcase == "xyz"}
+
+  def first_name_invalid
+    puts "This type of name is not allowed !"
   end
 end
