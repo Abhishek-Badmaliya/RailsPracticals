@@ -59,10 +59,13 @@ class Student < ApplicationRecord
   end
 
   #it's called after destroy method
-  after_destroy :first_name_invalid,
-    if: Proc.new { |student| student.first_name.downcase == "abcd" or student.first_name.downcase == "xyz"}
+  after_destroy :first_name_invalid, if: :check_first_name
 
+  def check_first_name
+    Student.count >= 2 ? true : false
+  end
+    
   def first_name_invalid
-    puts "This type of name is not allowed !"
+    puts "Student's record has been deleted successfuly"
   end
 end
