@@ -1,2 +1,51 @@
-<h1>Employees#index</h1>
-<p>Find me in app/views/employees/index.html.erb</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b">
+  <div class="container">
+      <u><h2>Employees</h2></u>
+      
+      <div>
+        <%= link_to 'Add Employee', new_employee_path %>
+      </div><br>
+
+      <table class="tabl" >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Orders</th>
+            <th>Full Time Available</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.first_name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.age %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.no_of_order %></td>
+            <td><%= employee.full_time_available %></td>
+            <td><%= employee.salary %></td>
+            <div>
+              <td>
+                <%= link_to 'Show', employee_path(employee) %>
+                  
+                <%= link_to 'Edit', edit_employee_path(employee) %>
+                <%= button_to 'Delete', employee_path(employee), method: :delete %>
+              </td>
+            </div>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </div>
+</body>
+</html>
