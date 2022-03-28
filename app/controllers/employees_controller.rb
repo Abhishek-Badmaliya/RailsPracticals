@@ -1,6 +1,13 @@
 class EmployeesController < ApplicationController
   def index
     @employees = Employee.all
+    if params[:search]
+      if Employee.find_by("email=?", params[:search])
+        flash[:notice] = "Email is exists in this record!"
+      else
+        flash[:notice] = "Email is not exists in this record!"
+      end
+    end
   end
 
   def show
@@ -12,8 +19,8 @@ class EmployeesController < ApplicationController
   end
 
   def create
-    @employee = Employee.new(employee_params)
-    if @employee.save
+    @employee = Employee.find_or_create_by(employee_params)
+    if @employee.valid?
       flash[:notice] = "Employee added successfully !"
       redirect_to employees_path
     else
@@ -45,6 +52,29 @@ class EmployeesController < ApplicationController
     else
       flash[:error] = "Oops, Deletion Operation Failed !"
     end
+  end
+
+  def result
+  end
+
+  def increase_order
+    Employee.find_in_batches(batch_size:10) do |employee|
+      employee.each do |e|
+        e.no_of_order+=1
+        e.save
+      end
+    end
+    redirect_to employees_path
+  end
+
+  def decrease_order
+    Employee.find_in_batches(batch_size:10) do |employee|
+      employee.each do |e|
+        e.no_of_order-=1
+        e.save
+      end
+    end
+    redirect_to employees_path
   end
 
   private
