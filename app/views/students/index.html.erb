@@ -11,6 +11,14 @@
         <%= link_to 'Add Student', new_student_path %>
       </div><br>
 
+      <%= form_tag increase_order_path, data: {turbo: false}, :method => 'get' do %>
+        <%= submit_tag "Increase Order"%>
+      <% end %><br>
+
+      <%= form_tag decrease_order_path, data: {turbo: false}, :method => 'get' do %>
+        <%= submit_tag "Decrease Order"%>
+      <% end %><br>
+
       <table class="tabl" >
         <thead>
           <tr>

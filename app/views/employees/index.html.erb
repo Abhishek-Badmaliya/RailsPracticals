@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="styles.css">
+</head>
+<body id="b">
+  <div class="container">
+      <u><h2>Employees</h2></u>
+      
+      <div>
+        <%= link_to 'Add Employee', new_employee_path %>
+      </div><br>
+
+      <%= form_tag increase_order_path, data: {turbo: false}, :method => 'get' do %>
+        <%= submit_tag "Increase Order"%>
+      <% end %><br>
+
+      <%= form_tag decrease_order_path, data: {turbo: false}, :method => 'get' do %>
+        <%= submit_tag "Decrease Order"%>
+      <% end %><br>
+
+      <table class="tabl" >
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Orders</th>
+            <th>Full Time Available</th>
+            <th>Salary</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @employees.each do |employee| %>
+          <tr>
+            <td><%= employee.first_name %></td>
+            <td><%= employee.last_name %></td>
+            <td><%= employee.age %></td>
+            <td><%= employee.email %></td>
+            <td><%= employee.no_of_order %></td>
+            <td><%= employee.full_time_available %></td>
+            <td><%= employee.salary %></td>
+            <div>
+              <td>
+                <%= link_to 'Show', employee_path(employee) %>
+                  
+                <%= link_to 'Edit', edit_employee_path(employee) %>
+                <%= button_to 'Delete', employee_path(employee), method: :delete %>
+              </td>
+            </div>
+          </tr>
+        <% end %>
+        </tbody>
+      </table> <br>
+
+      <%= form_tag employees_path, data: {turbo: false}, :method => 'get' do %>
+        <%= text_field_tag :search, params[:saerch], placeholder:"hey, enter email here"%>
+        <%= submit_tag "Search"%>
+      <% end %><br>
+
+      <% if flash[:notice] %>
+        <% flash.each do |name, msg| %>
+          <span> <%= msg%> </span>
+        <% end %>
+      <% end %>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+  <link rel="styles.css">
+<head>
+<body id="b2">
+  <div class="container">
+    <u><h2>Employee Details</h2></u>
+    <div>
+      <label>Employee First Name: </label>
+      <%=@employee.first_name%>  
+    </div>
+    <div>
+      <label>Employee Last Name: </label>
+      <%=@employee.last_name%>  
+    </div>
+    <div>
+      <label>Employee Age: </label>
+      <%=@employee.age%>  
+    </div>
+    <div>
+      <label>Employee No of Orders: </label>
+      <%=@employee.no_of_order%>
+    </div>
+    <div>
+      <label>Employee Full Time Availability: </label>
+      <%=@employee.full_time_available%>
+    </div>
+    <div>
+      <label>Employee Salary: </label>
+      <%=@employee.salary%>
+    </div>
+    <div>
+      <%=link_to'Back',{controller:'employees',action:'index'}%>
+    </div>
+  </div>
+</body>
+<html>
