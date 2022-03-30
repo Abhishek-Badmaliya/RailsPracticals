@@ -48,6 +48,11 @@ class CustomersController < ApplicationController
   end
 
   private
+
+  def set_customer
+    @customer = Customer.find(params[:id])
+  end
+
   def customer_params
     params.require(:customer).permit(:fname, :lname, :email, :phone_number)
   end

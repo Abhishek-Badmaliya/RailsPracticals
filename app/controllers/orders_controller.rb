@@ -1,6 +1,12 @@
 class OrdersController < ApplicationController
   def index
-    @orders = Order.all
+    if params[:search]
+      @orders = Order.all
+      @orders = Order.where(status:'booked') if params[:search] == 'booked'
+      @orders = Order.where(status:'cancelled') if params[:search] == 'cancelled'
+    else
+      @orders = Order.all
+    end
   end
 
   def show
