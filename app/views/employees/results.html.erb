@@ -1,114 +1,109 @@
 <html>
 
-<head>
-	<link rel="ress.css">
-	<b><i><h2>List of Results</h2></i></b>
-</head><br><br>
+  <head>
+    <link rel="ress.css">
+    <b><i><h2>List of Results</h2></i></b>
+  </head><br><br>
 
-<body id="bd">
+  <body id="bd">
 
-  <p><b><h4>List of employees having age > 20 and < 40</h4></b></p><hr>
-    <p>
-      <% Employee.where("age > 20 and age < 40").each do |employee| %>
-        <span><label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> </span> <br>
-      <% end %>
-    </p><br>
-    
-  <p><b><h4>List of employees which are full time available</h4></b></p><hr>
-    <p>
-      <% Employee.where(full_time_available:"Yes").each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Full Time Available : </label> <%= employee.full_time_available%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees having age > 20 and < 40</h4></b></p><hr>
+      <p>
+        <% Employee.where("age > 20 and age < 40").each do |employee| %>
+          <span><label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> </span> <br>
+        <% end %>
+      </p><br>
+      
+    <p><b><h4>List of employees which are full time available</h4></b></p><hr>
+      <p>
+        <% Employee.where(full_time_available:"Yes").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Full Time Available : </label> <%= employee.full_time_available%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees which have exact 5 number of orders and age > 25</h4></b></p><hr>
-    <p>
-      <% Employee.where("no_of_order=5 and age > 25").each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees which have exact 5 number of orders and age > 25</h4></b></p><hr>
+      <p>
+        <% Employee.where("no_of_order=5 and age > 25").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees which are created before today</h4></b></p><hr>
-    <p>
-      <% Employee.where("created_at < ?", 1.days.ago).each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%=employee.last_name %> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees which are created before today</h4></b></p><hr>
+      <p>
+        <% Employee.where("created_at < ?", 1.days.ago).each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%=employee.last_name %> <label>, Created at : </label> <%= employee.created_at%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees which have exact 5 number of orders Or age < 25</h4></b></p><hr>
-    <p>
-      <% Employee.where("no_of_order=5 or age < 25").each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees which have exact 5 number of orders Or age < 25</h4></b></p><hr>
+      <p>
+        <% Employee.where("no_of_order=5 or age < 25").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees in descending order by age</h4></b></p><hr>
-    <p>
-      <% Employee.order("age desc").each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees in descending order by age</h4></b></p><hr>
+      <p>
+        <% Employee.order("age desc").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Age : </label> <%= employee.age%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees in ascending order by number of order</h4></b></p><hr>
-    <p>
-      <% Employee.order(:no_of_order).each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-       <% end %>
-    </p><br>
+    <p><b><h4>List of employees in ascending order by number of order</h4></b></p><hr>
+      <p>
+        <% Employee.order(:no_of_order).each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>List of employees having salary > 45000</h4></b></p><hr>
-    <p>
-      <% Employee.where("salary > 45000").each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Salary : </label> <%= employee.salary%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>List of employees having salary > 45000</h4></b></p><hr>
+      <p>
+        <% Employee.where("salary > 45000").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Salary : </label> <%= employee.salary%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Group of employees by no_of_order with them and display employees with no_of_order > 5</h4></b></p><hr>
-    <p>
-      <% Employee.group(:no_of_order).having("no_of_order > 2").each do |employee| %>
-         <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>Group of employees by no_of_order with them and display employees with no_of_order > 5</h4></b></p><hr>
+      <p>
+        <% Employee.group(:no_of_order).having("no_of_order > 2").each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Example of keyword Unscope</h4></b></p><hr>
-    <p>
-      <% Employee.where('id > 1').limit(5).order('id desc').unscope(:order).each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>Example of keyword Unscope</h4></b></p><hr>
+      <p>
+        <% Employee.where('id > 1').limit(5).order('id desc').unscope(:order).each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Example of keyword Only</h4></b></p><hr>
-    <p>
-      <% Employee.where("no_of_order > 15").order('id desc').only(:order, :where).each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>Example of keyword Only</h4></b></p><hr>
+      <p>
+        <% Employee.where("no_of_order > 15").order('id desc').only(:order, :where).each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Example of keyword Reselect</h4></b></p><hr>
-    <p>
-      <% Employee.select(:first_name).reselect(:last_name).each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.last_name %> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>Example of keyword Reselect</h4></b></p><hr>
+      <p>
+        <% Employee.select(:first_name).reselect(:last_name).each do |employee| %>
+          <span> <label>Employee Name : </label> <%= employee.last_name %> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Example for keyword Reorder</h4></b></p><hr>
-    <p>
-      <% Employee.order('first_name ASC').reorder('last_name DESC').each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> </span> <br>
-      <% end %>
-    </p><br>
+    <p><b><h4>Example for keyword Reorder</h4></b></p><hr>
+      <p>
+        <% Employee.order('first_name ASC').reorder('last_name DESC').each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> </span> <br>
+        <% end %>
+      </p><br>
 
-  <p><b><h4>Example for keyword reverse_order</h4></b></p><hr>
-    <p>
-      <% Employee.where("no_of_order > 10").reverse_order.each do |employee| %>
-        <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
-      <% end %>
-    </p><br>
-
-  <p><b><h4>Implement one of the example of locking</h4></b></p><hr>
-  	<p>
-			Implemented: While updating the record
-		</p>
+    <p><b><h4>Example for keyword reverse_order</h4></b></p><hr>
+      <p>
+        <% Employee.where("no_of_order > 10").reverse_order.each do |employee| %>
+          <span> <label>Full Name : </label> <%= employee.first_name %> <%= employee.last_name %> <label>, Number of Orders : </label> <%= employee.no_of_order%> </span> <br>
+        <% end %>
+      </p><br>
 
   </body>
 </html>
