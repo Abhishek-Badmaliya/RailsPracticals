@@ -46,7 +46,15 @@ class Product1sController < ApplicationController
       flash[:notice] = "Oops, Deletion Operation Failed !"
     end
   end
-    
+  
+  def display_all_products
+    @product1s=Product.all.unscoped
+  end
+
+  def display_products_which_is_active
+    @product1s=Product.all
+  end
+
   private
     def product1_params
       params.require(:product1).permit(:title, :description, :price, :capacity, :is_active, :status)
