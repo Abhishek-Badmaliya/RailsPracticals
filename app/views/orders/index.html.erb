@@ -1,46 +1,46 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <link rel="styles.css">
-</head>
-<body id="b">
-  <div class="container">
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b">
+    <div class="container">
       <u><h2>Orders</h2></u>
-      
-      <div>
-        <%= link_to 'Add Order', new_order_path %>
-      </div><br>
+        
+        <div>
+          <%= link_to 'Add Order', new_order_path %>
+        </div><br>
 
-      <table class="tabl" >
-        <thead>
-          <tr>
-            <th>Quantity</th>
-            <th>Total Price</th>
-            <th>Product ID</th>
-            <th>Status</th>
-            <th>Customer ID</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% @orders.each do |order| %>
-          <tr>
-            <td><%= order.quantity %></td>
-            <td><%= order.total_price %></td>
-            <td><%= order.product_id %></td>
-            <td><%= order.product_status %></td>
-            <td><%= order.customer_id %></td>
-            <div>
-              <td>
-                <%= link_to 'Show', order_path(order) %>
-                <%= link_to 'Edit', edit_order_path(order) %>
-                <%= button_to 'Delete', order_path(order), method: :delete %>
-              </td>
-            </div>
-          </tr>
-        <% end %>
-        </tbody>
-      </table>
-  </div>
-</body>
+        <table class="tabl" >
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+              <th>Total Price</th>
+              <th>Status</th>
+              <th>Customer</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.product1.title %></td>
+              <td><%= order.quantity %></td>
+              <td><%= order.(quantity)*(order.product1.price) %></td>
+              <td><%= order.order_status %></td>
+              <td><%= order.customer.fname + " " + order.customer.lname %></td>
+              <div>
+                <td>
+                  <%= link_to 'Show', order_path(order) %>
+                  <%= link_to 'Edit', edit_order_path(order) %>
+                  <%= button_to 'Delete', order_path(order), method: :delete %>
+                </td>
+              </div>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+  </body>
 </html>

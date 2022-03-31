@@ -1,33 +1,27 @@
 <html>
-<head>
-  <link rel="styles.css">
-<head>
-<body id="b2">
-  <div class="container">
-    <u><h2>Order Details</h2></u>
-    <div>
-      <label>Order Quantity : </label>
-      <%=@order.quantity%>  
+  <head>
+    <link rel="styles.css">
+  <head>
+  <body id="b2">
+    <div class="container">
+      <u><h2>Order Details</h2></u>
+      <div>
+        <label>Order Quantity : </label>
+        <%=@order.quantity%>  
+      </div>
+      <div>
+        <label>Total Price : </label>
+        <%=@order.total_price%>  
+      </div>
+      <div>
+      <div>
+      <label>Product Status : </label>
+        <%=@order.order_status%>  
+      </div>
+      <div>
+      <div>
+        <%=link_to'Back',{controller:'orders',action:'index'}%>
+      </div>
     </div>
-    <div>
-      <label>Total Price : </label>
-      <%=@order.total_price%>  
-    </div>
-    <div>
-    <label>Product ID : </label>
-      <%=@order.product_id%>  
-    </div>
-    <div>
-    <label>Product Status : </label>
-      <%=@order.product_status%>  
-    </div>
-    <div>
-    <label>Customer ID : </label>
-      <%=@order.customer_id%>  
-    </div>
-    <div>
-      <%=link_to'Back',{controller:'orders',action:'index'}%>
-    </div>
-  </div>
-</body>
+  </body>
 <html>

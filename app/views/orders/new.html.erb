@@ -1,43 +1,43 @@
 <html>
-<head>
-  <link rel="styles.css">
-</head>
-<body id="b1">
-  <div class="container">
-    <%= form_for @order, data: { turbo: false }, url: {action: :create} do |f| %>
-      <div>
-        <u><h2>Add Order Details</h2></u>
-      </div>
-      <div>
-        <p>
-          <%= "<div>#{@order.errors.full_messages.first}</div>".html_safe if @order.errors.any? %>
-          <div>
-            <label>Order Quantity : </label>
-            <%= f.text_field :quantity %>
-          </div>
-          <div>
-            <label>Order Total Price : </label>
-            <%= f.text_field :total_price %>
-          </div>
-          <div>
-            <label>Product ID : </label>
-            <%= f.text_field :product_id %>
-          </div>
-          <div>
-            <label>Order Status : </label>
-            <%= f.select :product_status, ['Booked','Cancelled'] %>
-          </div>
-          <div>
-            <label>Customer ID : </label>
-            <%= f.text_field :customer_id %>
-          </div>
-        </p>
-      </div>
-      <div>
-        <%= link_to 'Back', { controller: 'orders', action: 'index'} %>
-        <%= f.submit 'Create order' %>
-      </div>
-    <% end %>
-  </div>
-</body>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b1">
+    <div class="container">
+      <%= form_for @order, data: { turbo: false }, url: {action: :create} do |f| %>
+        <div>
+          <u><h2>Add Order Details</h2></u>
+        </div>
+        <div>
+          <p>
+            <%= "<div>#{@order.errors.full_messages.first}</div>".html_safe if @order.errors.any? %>
+            <div>
+              <label>Order Quantity : </label>
+              <%= f.text_field :quantity %>
+            </div>
+            <div>
+              <label>Order Total Price : </label>
+              <%= f.text_field :total_price %>
+            </div>
+            <div>
+              <label>Product ID : </label>
+              <%= f.text_field :product_id %>
+            </div>
+            <div>
+              <label>Order Status : </label>
+              <%= f.select :order_status, ['Booked','Cancelled'] %>
+            </div>
+            <div>
+              <label>Customer ID : </label>
+              <%= f.text_field :customer_id %>
+            </div>
+          </p>
+        </div>
+        <div>
+          <%= link_to 'Back', { controller: 'orders', action: 'index'} %>
+          <%= f.submit 'Create order' %>
+        </div>
+      <% end %>
+    </div>
+  </body>
 </html>

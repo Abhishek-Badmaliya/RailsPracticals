@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_112839) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_31_100524) do
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -85,10 +85,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_112839) do
     t.integer "quantity"
     t.integer "total_price"
     t.integer "product_id"
-    t.string "product_status"
     t.integer "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "order_status"
   end
 
   create_table "product1s", force: :cascade do |t|
@@ -97,7 +97,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_112839) do
     t.integer "price"
     t.string "capacity"
     t.boolean "is_active"
-    t.string "status"
+    t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
