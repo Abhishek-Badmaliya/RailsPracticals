@@ -11,14 +11,16 @@
       </div>
       <div>
         <label>Total Price : </label>
-        <%=@order.total_price%>  
+        <%=(@order.quantity)*(@order.product1.price)%>  
       </div>
       <div>
-      <div>
-      <label>Product Status : </label>
+        <label>Order Status : </label>
         <%=@order.order_status%>  
       </div>
-      <div>
+      <div
+        <label>Customer Name : </label>
+        <%=@order.customer.fname + " " + @order.customer.lname%>
+      </div>
       <div>
         <%=link_to'Back',{controller:'orders',action:'index'}%>
       </div>
