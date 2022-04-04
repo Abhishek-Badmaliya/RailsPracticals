@@ -1,0 +1,98 @@
+<html>
+  <body>
+    <center>
+      <%=  link_to 'Customers listing', customers_path, class:"btn btn-outline-secondary" %> ||
+      <%=  link_to 'Orders listing', orders_path, class:"btn btn-outline-secondary" %> ||
+      <%=  link_to 'Products listing', product1s_path, class:"btn btn-outline-secondary" %>
+    </center>
+
+    <p><b><h4>Most sales product by quantity</h4></b></p><hr>
+    <table width=100%>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Sum of Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Order.select('customer_id, sum(quantity) as Sum_Of_Quantity').group('customer_id').order(Sum_Of_Quantity: :desc).first(3).each do |s| %>
+          <tr>
+            <td><%= s.customer.fname %> <%= s.customer.lname %></td>
+            <td><%= s.customer.email %></td>
+            <td><%= s.customer.phone_number %></td>
+            <td><%= s.Sum_Of_Quantity %></td>
+          </tr>
+        <% end %>   
+      </tbody>
+    </table><br>
+
+    <p><b><h4>Most sales product by price</h4></b></p><hr>
+    <table width=100%>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Sum of Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Order.select('customer_id, sum(total_price) as Sum_Of_Total_Price').group('customer_id').order(Sum_Of_Total_Price: :desc).first(3).each do |s| %>
+          <tr>
+            <td><%= s.customer.fname %> <%= s.customer.lname %></td>
+            <td><%= s.customer.email %></td>
+            <td><%= s.customer.phone_number %></td>
+            <td><%= s.Sum_Of_Total_Price %></td>
+          </tr>
+        <% end %>   
+        </tbody>
+    </table><br>
+
+    <p><b><h4>Most booked order of product</h4></b></p><hr>
+    <table width=100%>
+      <thead>
+        <tr>
+          <th>Total Booked Order</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Order.group(:customer_id).having(order_status:'booked').first(5).each do |s| %>
+          <tr>
+            <td><%= Order.where(customer_id:s.customer_id).where(order_status:'booked').count %></td>
+            <td><%= s.customer.fname %> <%= s.customer.lname %></td>
+            <td><%= s.customer.email %></td>
+            <td><%= s.customer.phone_number %></td>
+          </tr>
+        <% end %>   
+      </tbody>
+    </table><br>
+
+    <p><b><h4>Most cancelled order of product</h4></b></p><hr>
+    <table width=100%>
+      <thead>
+        <tr>
+          <th>Total Cancelled Order</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% Order.group(:customer_id).having(order_status:'cancelled').first(5).each do |s| %>
+          <tr>
+            <td><%= Order.where(customer_id:s.customer_id).where(order_status:'cancelled').count %></td>
+            <td><%= s.customer.fname %> <%= s.customer.lname %></td>
+            <td><%= s.customer.email %></td>
+            <td><%= s.customer.phone_number %></td>
+          </tr>
+        <% end %>   
+      </tbody>
+    </table><br>
+
+  </body>
+</html>

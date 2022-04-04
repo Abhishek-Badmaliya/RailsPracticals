@@ -29,11 +29,11 @@
             </div>
             <div>
               <label>Product Active : </label>
-              <%= f.select :is_active, ['Yes','No'] %>
+              <%= f.select :is_active, options_for_select([true,false]) %>
             </div>
             <div>
               <label>Product Status : </label>
-              <%= f.select :status, options_for_select(['In_stock', 'Out_of_stock' ,'Coming_soon']) %>
+              <%= f.select :status, Product1.statuses.keys %>
             </div>
           </p>
         </div>

@@ -11,27 +11,30 @@
           <%= link_to 'Add Order', new_order_path %>
         </div><br>
 
+        <%= form_tag orders_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search], placeholder:'Search by order status' %>
+            <%= submit_tag "Search" %>
+          </p>
+        <% end %>
+
         <table class="tabl" >
           <thead>
             <tr>
-              <th>Product</th>
-              <th>Quantity</th>
-              <th>Total Price</th>
+              <th>Customer Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
               <th>Status</th>
-              <th>Customer</th>
-              <th>Product ID</th>
-              <th>Actions</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td><%= order.product1.title %></td>
-              <td><%= order.quantity %></td>
-              <td><%= (order.quantity)*(order.product1.price) %></td>
-              <td><%= order.product_status %></td>
-            #  <td><%=  %></td>
-              #<td><%=  %></td>
+              <td><%= order.customer.fname %> <%= order.customer.lname %></td>
+              <td><%= order.customer.email %></td>
+              <td><%= order.customer.phone_number %></td>
+              <td><%= order.order_status %></td>
               <div>
                 <td>
                   <%= link_to 'Show', order_path(order) %>
