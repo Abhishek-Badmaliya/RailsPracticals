@@ -49,7 +49,7 @@ class Product1sController < ApplicationController
 
   #create method for display all products on this page
   def display_all_products
-    @product1s=Product1.all.unscoped
+    @product1s = Product1.all.unscoped
   end
 
   #create method for diaplay only active products

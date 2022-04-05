@@ -7,7 +7,17 @@ class OrdersController < ApplicationController
     else
       @orders = Order.all
     end
-  end
+
+    #Searching Orders Record by Product name
+    begin
+      if !(params[:product_name].blank?)
+          @orders_by_product = Product1.where(["title LIKE ?","%#{params[:product_name]}%"])[0].orders
+      end    
+      rescue Exception
+        flash[:notice] = "Record not found!"
+        redirect_to orders_path
+      end
+    end
 
   def show
     @order = Order.find(params[:id])

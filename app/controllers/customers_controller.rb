@@ -48,7 +48,6 @@ class CustomersController < ApplicationController
   end
 
   private
-
   def set_customer
     @customer = Customer.find(params[:id])
   end

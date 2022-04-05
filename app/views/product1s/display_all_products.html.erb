@@ -5,8 +5,7 @@
   </head>
   <body id="b">
     <div class="container">
-        <u><h2>Product1s</h2></u>
-        
+      <p><i><h2>List of All Products</h2></i></p><hr>
         <table class="tabl" >
           <thead>
             <tr>
@@ -19,16 +18,16 @@
             </tr>
           </thead>
           <tbody>
-          <% @product1s.each do |product1| %>
-            <tr>
-              <td><%= product1.title %></td>
-              <td><%= product1.description %></td>
-              <td><%= product1.price %></td>
-              <td><%= product1.capacity %></td>
-              <td><%= product1.is_active %></td>
-              <td><%= product1.status %></td>
-            </tr>
-          <% end %>
+            <% @product1s.each do |product1| %>
+              <tr>
+                <td><%= product1.title %></td>
+                <td><%= product1.description %></td>
+                <td><%= product1.price %></td>
+                <td><%= product1.capacity %></td>
+                <td><%= product1.is_active %></td>
+                <td><%= product1.status %></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
     </div>
