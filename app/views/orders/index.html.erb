@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b">
+    <div class="container">
+      <u><h2>Orders</h2></u>
+        
+        <div>
+          <%= link_to 'Add Order', new_order_path %>
+        </div><br>
+
+        <%= form_tag orders_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search], placeholder:'Search by order status' %>
+            <%= submit_tag "Search" %>
+          </p>
+        <% end %><br>
+
+        <table class="tabl" >
+          <thead>
+            <tr>
+              <th>Customer Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.customer.fname %> <%= order.customer.lname %></td>
+              <td><%= order.customer.email %></td>
+              <td><%= order.customer.phone_number %></td>
+              <td><%= order.order_status %></td>
+              <div>
+                <td>
+                  <%= link_to 'Show', order_path(order) %>
+                  <%= link_to 'Edit', edit_order_path(order) %>
+                  <%= button_to 'Delete', order_path(order), method: :delete %>
+                </td>
+              </div>
+            </tr>
+          <% end %>
+          </tbody>
+        </table><br>
+
+        <%= form_tag orders_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :product_name, params[:product_name], placeholder:'Search by product name' %>
+            <%= submit_tag "Search" %>
+          </p>
+        <% end %>
+
+        <% if flash[:notice] %>
+          <% flash.each do |name, msg| %>
+            <span style="color:red;"> <%= msg %> </span>
+          <% end %>
+        <% end %><br>
+
+        <%if !(params[:product_name].blank?) %>
+          <table class="tabl" >
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Order ID</th>
+                <th>Quantity</th>
+                <th>Total Price</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @orders_by_product.each do |order| %>
+                <tr>
+                  <td><%= order.product1.title %></td>
+                  <td><%= order.id %></td>
+                  <td><%= order.quantity %></td>
+                  <td><%= order.total_price %></td>
+                  <td><%= order.order_status %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <% end %>
+    </div>
+  </body>
+</html>
