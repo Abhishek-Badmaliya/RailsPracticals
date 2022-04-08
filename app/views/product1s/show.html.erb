@@ -1,0 +1,41 @@
+<html>
+  <head>
+    <link rel="styles.css">
+  <head>
+  <body id="b2">
+    <div class="container">
+      <u><h2>Product Details</h2></u>
+      <div>
+        <label>Product Title : </label>
+        <%=@product1.title%>  
+      </div>
+      <div>
+        <label>Description : </label>
+        <%=@product1.description%>  
+      </div>
+      <div>
+        <label>Product Price : </label>
+        <%=@product1.price%>  
+      </div>
+      <div>
+        <label>Product Capacity : </label>
+        <%=@product1.capacity%>  
+      </div>
+      <div>
+        <label>Product Active : </label>
+        <%=@product1.is_active%>  
+      </div>
+      <div>
+        <label>Product Status : </label>
+        <%=@product1.status%>  
+      </div>
+      <div>
+        <label>Total Orders : </label>
+        <%= Order.where('product1_id = ?',@product1).count %>  
+      </div>
+      <div>
+        <%=link_to'Back',{controller:'product1s',action:'index'}%>
+      </div>
+    </div>
+  </body>
+<html>

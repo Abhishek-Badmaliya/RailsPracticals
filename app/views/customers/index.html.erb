@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b">
+    <div class="container">
+        <u><h2>Customers</h2></u>
+        
+        <div>
+          <%= link_to 'Add Customer', new_customer_path %>
+        </div><br>
+
+        <table class="tabl" >
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+          <% @customers.each do |customer| %>
+            <tr>
+              <td><%= customer.fname %></td>
+              <td><%= customer.lname %></td>
+              <td><%= customer.email %></td>
+              <td><%= customer.phone_number %></td>
+              <div>
+                <td>
+                  <%= link_to 'Show', customer_path(customer) %>
+                  <%= link_to 'Edit', edit_customer_path(customer) %>
+                  <%= button_to 'Delete', customer_path(customer), method: :delete %>
+                </td>
+              </div>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b">
+    <div class="container">
+      <p><i><h2>List of all Active Products</h2></i></p><hr>
+        <table class="tabl" >
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Price</th>
+              <th>Capacity</th>
+              <th>Active</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @product1s.each do |product1| %>
+              <tr>
+                <td><%= product1.title %></td>
+                <td><%= product1.description %></td>
+                <td><%= product1.price %></td>
+                <td><%= product1.capacity %></td>
+                <td><%= product1.is_active %></td>
+                <td><%= product1.status %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </body>
+</html>

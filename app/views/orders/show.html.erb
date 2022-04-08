@@ -1,0 +1,49 @@
+<html>
+  <head>
+    <link rel="styles.css">
+  <head>
+  <body id="b2">
+    <div class="container">
+      <u><h2>Order Details</h2></u>
+      <div>
+        <label>Order Quantity : </label>
+        <%=@order.quantity%>  
+      </div>
+      <div>
+        <label>Total Price : </label>
+        <%=(@order.quantity)*(@order.product1.price)%>  
+      </div>
+      <div>
+        <label>Order Status : </label>
+        <%=@order.order_status%>  
+      </div>
+      <div>
+        <label>Customer Name : </label>
+        <%=@order.customer.fname + " " + @order.customer.lname%>
+      </div>
+      <div>
+        <label>Customer Email : </label>
+        <%=@order.customer.email%>  
+      </div>
+      <div>
+        <label>Customer Contact : </label>
+        <%=@order.customer.phone_number%>  
+      </div>
+      <div>
+        <label>Product Name : </label>
+        <%=@order.product1.title%>
+      </div>
+      <div>
+        <label>Product Price : </label>
+        <%=@order.product1.price%>  
+      </div>
+      <div>
+        <label>Product Status : </label>
+        <%=@order.product1.status%>  
+      </div>
+      <div>
+        <%=link_to'Back',{controller:'orders',action:'index'}%>
+      </div>
+    </div>
+  </body>
+<html>

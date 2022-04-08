@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b3">
+    <div class="container">
+      <%= form_for @customer, data: { turbo: false }, url: {action: :update} do |f| %>
+        <u><h2>Edit Customer</h2></u>
+        <%= "<div>#{@customer.errors.full_messages.first}</div>".html_safe if @customer.errors.any? %>
+          <p>
+            <div>
+              <label>Customer First Name : </label>
+              <%= f.text_field :fname %>
+            </div>
+            <div>
+              <label>Customer Last Name : </label>
+              <%= f.text_field :lname %>
+            </div>
+            <div>
+              <label>Customer Email : </label>
+              <%= f.text_field :email %>
+            </div>
+            <div>
+              <label>Customer Phone Number : </label>
+              <%= f.text_field :phone_number %>
+            </div>
+          </p>
+          <div>
+            <%= link_to 'Back', { controller: 'customers', action: 'index'} %>
+            <%= f.submit 'Update Customer' %>   
+          </div>
+      <% end %>
+    </div>
+  </body>
+</html>

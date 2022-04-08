@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <link rel="styles.css">
+  </head>
+  <body id="b3">
+    <div class="container">
+      <%= form_for @order, data: { turbo: false }, url: {action: :update} do |f| %>
+        <u><h2>Edit Order</h2></u>
+        <%= "<div>#{@order.errors.full_messages.first}</div>".html_safe if @order.errors.any? %>
+          <p>
+            <div>
+              <label>Order Quantity : </label>
+              <%= f.text_field :quantity %>
+            </div>
+            <div>
+              <label>Order Total Price : </label>
+              <%= f.text_field :total_price %>
+            </div>
+            <div>
+              <label>Product ID : </label>
+              <%= f.text_field :product1_id %>
+            </div>
+            <div>
+              <label>Order Status : </label>
+              <%= f.select :order_status, options_for_select([:booked, :cancelled]) %>
+            </div>
+            <div>
+              <label>Customer Name : </label>
+              <%= f.select :customer_id, Customer.all.map { |c| [c.fname + " " + c.lname, c.id]} %>
+            </div>
+          </p>
+          <div>
+            <%= link_to 'Back', { controller: 'orders', action: 'index'} %>
+            <%= f.submit 'Update Order' %>   
+          </div>
+      <% end %>
+    </div>
+  </body>
+</html>
