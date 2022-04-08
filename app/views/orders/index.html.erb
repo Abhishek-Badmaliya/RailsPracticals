@@ -11,10 +11,10 @@
           <%= link_to 'Add Order', new_order_path %>
         </div><br>
 
-        <%= form_tag orders_path, :method => 'get' do %>
+        <%= form_with url: "/orders", :method => 'get' do |f| %>
           <p>
-            <%= text_field_tag :search, params[:search], placeholder:'Search by order status' %>
-            <%= submit_tag "Search" %>
+            <%= f.select :search, Order.order_statuses.keys %>
+            <%= f.submit "Search" %>
           </p>
         <% end %><br>
 
