@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   #root "users#index"
-  get '/users', to: "users#index"
+  #get '/users', to: "users#index"
 
   resources :authors
   resources :books
@@ -25,6 +25,10 @@ Rails.application.routes.draw do
   resources :product1s
   resources :customers
   resources :orders
+
+  resources :events
+  resources :ussers
   
   root "pages#home"
+  get '/pages', to: "pages#home"
 end

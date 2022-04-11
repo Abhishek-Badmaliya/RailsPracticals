@@ -1,0 +1,28 @@
+<%= link_to "Add Event", new_event_path, class:"btn btn-secondary btn-lg" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark">
+    <tr>
+      <th> Event Name </th>
+      <th> Event Description </th>
+      <th> Event Date </th>
+      <th> Event Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.description %></td>
+        <td><%= event.event_date %></td>
+        <div>
+          <td>
+            <%= link_to 'Show', event_path(event) %>
+            <%= link_to 'Edit', edit_event_path(event) %>
+            <%= button_to 'Delete', event_path(event), method: :delete %>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

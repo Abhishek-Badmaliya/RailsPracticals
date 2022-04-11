@@ -1,0 +1,31 @@
+<div class = "container" >
+  <h2>Create an User</h2><hr>
+
+  <% if @usser.errors.any? %>
+    <h2> The following errors prevented the user details from being saved ! </h2>
+    <ul>
+      <% @usser.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :usser, url:ussers_path, local: true do |f| %>
+    <div class = "field form-group" >
+      <%= f.label :user_name %>
+      <%= f.text_field :user_name, class:"form-control" %>
+    </div>
+    <div class = "field form-group" >
+      <%= f.label :user_email %>
+      <%= f.text_field :user_email, class:"form-control" %>
+    </div>
+    
+    <div class = "action" >
+      <%= f.submit "Sign Up", class:"btn btn-secondary" %>
+    </div><br>
+    <div class = "field form-group" >
+      <%= link_to 'Back', { controller: 'ussers', action: 'index'} %>
+    </div>
+  <% end %>
+
+</div>
