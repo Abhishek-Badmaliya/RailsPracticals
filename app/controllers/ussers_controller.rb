@@ -14,8 +14,8 @@ class UssersController < ApplicationController
   def create
     @usser = Usser.new(usser_params)
     if @usser.save
-      flash[:notice] = "User Added Successfully!"
-      redirect_to ussers_path
+      flash[:notice] = "User Sign Uped Successfully!"
+      redirect_to events_path
     else
       flash[:error] = "User can't be added!"
       render :new
@@ -23,6 +23,7 @@ class UssersController < ApplicationController
   end
 
   def edit
+    @usser = Usser.find(params[:id])
   end
 
   def update
@@ -52,6 +53,6 @@ class UssersController < ApplicationController
     end
 
     def usser_params
-      params.require(:usser).permit(:user_name, :user_email)
+      params.require(:usser).permit(:user_name, :user_email, :password)
     end
 end

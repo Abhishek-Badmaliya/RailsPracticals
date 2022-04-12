@@ -1,4 +1,20 @@
-<h1>Ussers#index</h1>
-<p>Find me in app/views/ussers/index.html.erb</p>
+<h1 class="text-center mt-4">Events Organisers</h1><hr>
 
-
+<div class="container">
+  <% @ussers.each do |usser|%>
+    <div class="row justify-content-md-center">
+      <div class="col-6 mt-4">
+        <div class="card text-left shadow  mb-5 bg-white rounded">
+          <div class="card-body">
+            <p class="card-title">User Name : <%= link_to usser.user_name, usser_path(usser), class:"text-success" %><p>
+            <p class="card-text">User Email : <%= usser.user_email%></p>          
+            <p class="card-text">Events Created : <%= usser.events.count%></p>          
+          </div>
+          <div class="card-footer text-muted">
+            <small> joined <%= time_ago_in_words(usser.created_at)%> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>  
+  <% end %>
+</div>

@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :events
-  resources :ussers
+  resources :ussers, except: [:new]
+  get 'signup', to: 'ussers#new'
   
   root "pages#home"
   get '/pages', to: "pages#home"

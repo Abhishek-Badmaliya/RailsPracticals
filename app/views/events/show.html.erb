@@ -3,15 +3,15 @@
     <h2>Event Details</h2><hr>
     <p class = "lead" >
       <label>Event Name : </label>
-      <%=@event.name%>  
+      <%= @event.name %>  
     </p>
     <p class = "lead" >
       <label>Event Description : </label>
-      <%=@event.description%>  
+      <%= @event.description %>  
     </p>
     <p class = "lead" >
       <label>Event Date : </label>
-      <%=@event.event_date%>  
+      <%= @event.event_date %>  
     </p>
     <div>
       <%=link_to'Back',{controller:'events',action:'index'}%>

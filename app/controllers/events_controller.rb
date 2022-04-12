@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find(params[:id])
+    @set_event
   end
 
   def new
@@ -12,9 +12,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(event_params)
+    @event = Event.create(event_params)
     if @event.save
-      flash[:notice] = "Event Added Successfully!"
+      flash[:notice] = "Event's details Added Successfully!"
       redirect_to events_path
     else
       flash[:error] = "Event can't be added!"
@@ -23,7 +23,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @event = Event.find(params[:id])
+    @set_event
   end
 
   def update
@@ -53,6 +53,6 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:name, :description, :event_date)
+      params.require(:event).permit(:name, :description, :event_date, :usser_id)
     end
 end
