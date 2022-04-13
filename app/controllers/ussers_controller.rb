@@ -1,4 +1,7 @@
 class UssersController < ApplicationController
+
+  before_action :set_user, only: [:show, :edit, :update]
+  
   def index
     @ussers = Usser.all
   end
@@ -14,7 +17,8 @@ class UssersController < ApplicationController
   def create
     @usser = Usser.new(usser_params)
     if @usser.save
-      flash[:notice] = "User Sign Uped Successfully!"
+      session[:usser_id] = @usser.id
+      flash[:notice] = "Welcome to Events #{@usser.user_name}!"
       redirect_to events_path
     else
       flash[:error] = "User can't be added!"

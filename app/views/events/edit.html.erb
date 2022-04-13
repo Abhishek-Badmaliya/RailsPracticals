@@ -1,8 +1,8 @@
-<div class = "container-fluid" >
-  <h2>Edit an Event</h2><hr>
+<br><div class = "container-fluid" >
+  <h2 align="center">Edit an Event</h2><hr><br>
 
   <% if @event.errors.any? %>
-    <h2> The following errors prevented the event details from being saved ! </h2>
+    <h4> The following errors prevented the events details from being saved ! </h4>
     <ul>
       <% @event.errors.full_messages.each do |msg| %>
         <li> <%= msg %> </li>
@@ -10,25 +10,35 @@
     </ul>
   <% end %>
 
-  <%= form_with scope: :event, url:events_path, local: true do |f| %>
+  <%= form_with  model: @event, local: true do |f| %>
+
     <div class = "field form-group" >
       <%= f.label :name%>
       <%= f.text_field :name, class:"form-control" %>
-    </div>
+    </div><br>
+
     <div class = "field form-group" >
       <%= f.label :description%>
       <%= f.text_field :description, class:"form-control" %>
-    </div>
+    </div><br>
+
     <div class = "field form-group" >
       <%= f.label :event_date%><br>
       <%= f.date_select :event_date, class:"form-control" %>
-    </div>
-    <div class = "action" >
-      <%= f.submit "Edit", class:"btn btn-secondary" %>
     </div><br>
-    <div class = "field form-group" >
-      <%= link_to 'Back', { controller: 'events', action: 'index'} %>
+
+    <div align="center">
+      <div class = "action" >
+        <%= f.submit "Edit", class:"btn btn-secondary" %>
+      </div>
+    </div><br>
+
+    <div align="center">
+      <div class = "field form-group" >
+        <%= link_to 'Back', { controller: 'events', action: 'index'} %>
+      </div>
     </div>
+
   <% end %>
 
 </div>

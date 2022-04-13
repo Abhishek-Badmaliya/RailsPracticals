@@ -27,9 +27,13 @@ Rails.application.routes.draw do
   resources :orders
 
   resources :events
-  resources :ussers, except: [:new]
   get 'signup', to: 'ussers#new'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  resources :ussers, except: [:new]
+  resources :categories
   
-  root "pages#home"
-  get '/pages', to: "pages#home"
+  root "pages#home_page"
+  get '/pages', to: "pages#home_page"
 end

@@ -1,10 +1,11 @@
 class EventsController < ApplicationController
+
   def index
     @events = Event.all
   end
 
   def show
-    @set_event
+    set_event
   end
 
   def new
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
   end
 
   def edit
-    @set_event
+    set_event
   end
 
   def update
@@ -32,7 +33,7 @@ class EventsController < ApplicationController
       flash[:notice] = "Event's records Updated Successfully !"
       redirect_to events_path
     else
-      flash[:notice] = "Oops, Updation Operation Failed !"
+      flash[:error] = "Oops, Updation Operation Failed!"
       render :edit
     end
   end
