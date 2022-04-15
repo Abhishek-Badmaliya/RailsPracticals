@@ -1,5 +1,5 @@
 <div class = "container" ><br>
-  <h2 align=center>Create an User Account</h2><hr><br>
+  <h2 class="text-center mt-4">Create an User Account</h2><br>
 
   <% if @usser.errors.any? %>
     <h2> The following errors prevented the user details from being saved ! </h2>
@@ -10,7 +10,7 @@
     </ul>
   <% end %>
 
-  <%= form_with scope: :usser, url:ussers_path, local: true do |f| %>
+  <%= form_with(model: @usser) do |f| %>
 
     <div class = "field form-group" >
       <%= f.label :user_name %>
@@ -26,6 +26,13 @@
       <label>Password</label>
       <%= f.password_field :password, class:"form-control" %>
     </div><br>
+
+    <%= f.fields_for :address do |af| %>
+      <div class="field form-group">
+        <%= af.label :usser_address %>
+        <%= af.text_field :usser_address, class:"form-control" %>
+      </div><br>
+    <% end %>
     
     <div align=center>
       <div class = "action" >
@@ -35,10 +42,9 @@
 
     <div align=center>
       <div class = "field form-group" >
-        <%= link_to 'Back', { controller: 'ussers', action: 'index'} %>
+        <%= link_to 'Cancel', { controller: 'ussers', action: 'index'} %>
       </div>
     </div>
     
   <% end %>
-
 </div>

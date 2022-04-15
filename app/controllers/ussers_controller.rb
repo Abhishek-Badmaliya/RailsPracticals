@@ -1,6 +1,9 @@
 class UssersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update]
+  #add callbacks
+  before_action :set_usser, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, only: [:edit, :update]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
     @ussers = Usser.all
@@ -12,8 +15,10 @@ class UssersController < ApplicationController
 
   def new
     @usser = Usser.new
+    @usser.build_address
   end
 
+  #define create method
   def create
     @usser = Usser.new(usser_params)
     if @usser.save
@@ -42,13 +47,26 @@ class UssersController < ApplicationController
   end
 
   def destroy
-    @usser = Usser.find(params[:id])
-    if @usser.destroy
-      flash[:notice] = "User's records Deleted Successfully !"
-      redirect_to ussers_path
-    else
-      flash[:notice] = "Oops, Deletion Operation Failed !"
+    @usser.destroy
+    session[:usser_id] = nil
+    flash[:notice] = "Acconut and all records deleted !!!"
+    redirect_to events_path
+  end
+
+  #define method for enroll
+  def enroll
+    @usser = Usser.find_by(id: session[:usser_id])
+    if session[:usser_id] && params[:event_id]
+      Enrollment.create(usser_id:session[:usser_id],event_id:params[:event_id])
+      redirect_to events_path
     end
+  end
+
+  #define method for unroll
+  def unenroll
+    enrollment = Enrollment.find_by("usser_id=? and event_id=?",current_user,params[:event_id])
+    enrollment.destroy
+    redirect_to events_path
   end
 
   private
@@ -57,6 +75,13 @@ class UssersController < ApplicationController
     end
 
     def usser_params
-      params.require(:usser).permit(:user_name, :user_email, :password)
+      params.require(:usser).permit(:user_name, :user_email, :password, address_attributes: [:usser_address])
+    end
+
+    def require_same_user
+      if current_user !=  @usser
+        flash[:alert] = "You can only edit your profile !"
+        redirect_to ussers_path
+      end
     end
 end

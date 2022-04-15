@@ -1,20 +1,61 @@
 <div class = "container-fluid" ><br>
   
-    <h2 align="center">Event Details</h2><hr>
+    <h2 class = "text-center mt-4" >Event Details</h2><hr><br>
+    
     <p class = "lead" >
       <label><strong>Event Name : </strong></label>
       <%= @event.name %>  
     </p>
+
+    <p class = "lead" >
+      <label><strong>Category Name : </strong></label>
+      <%= @event.category.category_name %>  
+    </p>
+
     <p class = "lead" >
       <label><strong>Event Description : </strong></label>
       <%= @event.description %>  
     </p>
+
     <p class = "lead" >
       <label><strong>Event Date : </strong></label>
       <%= @event.event_date %>  
     </p>
+
+    <% if logged_in? && @event.usser == current_user %>
+      <%= link_to "Edit", edit_event_path(@event), class:"btn btn-primary" %> <br> <br>
+      <%= button_to "Delete", event_path(@event), class:"btn btn-danger" ,method: :delete, data: {confirm: "Are you sure?"} %> <br>
+    <% end %>
+
     <div>
       <%=link_to'Back',{controller:'events',action:'index'}%>
-    </div>
+    </div><br>
+
+    <% if @event.comments.any? %>
+      <div class="card-body text-dark bg-info mb-3">
+        <small> 
+          <h5> Comments </h5>
+          <% @event.comments.each do |comm| %>
+            <div>
+              <p class="lead"><i>By <%= comm.usser.user_name %></i> --- 
+              <%= comm.content %></p>
+              <span> 
+                <%= link_to 'Like', comments_like_path(:event_id => @event.id, :comment_id => comm.id), class: 'btn btn-secondary' %><br><br>
+                <%= comm.likes %> like
+              </span>
+            </div>   
+          <% end %>  
+        </small>
+      </div>
+    <% end %>
+    <% if logged_in? %>
+      <div class="card-body text-muted">
+        <%= form_with(url: comments_path, method: "post") do |f| %>
+          <%= f.text_field :content %>
+          <%= f.hidden_field :event_id, value: @event.id %>
+          <%= f.submit "Add Comment", class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    <% end %>
 
 </div>

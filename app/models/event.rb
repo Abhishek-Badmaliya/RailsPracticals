@@ -6,6 +6,11 @@ class Event < ApplicationRecord
   #validates description and event date
   validates :description, :event_date, presence: true
   
-  #assosiation
+  #add assosiations
   belongs_to :usser
+  belongs_to :category
+
+  has_many :enrollments
+  has_many :comments, dependent: :destroy
+  
 end

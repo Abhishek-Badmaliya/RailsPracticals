@@ -1,25 +1,51 @@
-<br><%= link_to "Add Event", new_event_path, class:"btn btn-secondary btn-lg" %><br><br>
+<h3 class="text-center mt-4">Events Lists</h3>
+
+<% if logged_in? %>
+  <br><%= link_to "Add Event", new_event_path, class:"btn btn-secondary btn-lg" %><br>
+<% end %>
+
+<br>
+  <%# functionality to filter events by its category %>
+  <%= form_tag(events_path, method: :get) do %>
+    <%= select_tag(:search, options_for_select(Category.all.map { |c| [c.category_name, c.id]}))%>
+    <%= submit_tag "Search", class:"btn btn-primary"%>
+  <% end %>
+<br>
 
 <table class = "table table-bordered">
-  <thead class = "table-dark">
+  <thead class = "table-dark text-center">
     <tr>
+      <th> Creator </th>
       <th> Event Name </th>
       <th> Event Description </th>
+      <th> Event Category </th>
       <th> Event Date </th>
       <th> Event Actions </th>
+      <th> Enrollment </th>
     </tr>
   </thead>
   <tbody>
     <% @events.each do |event| %>
       <tr>
+        <td><%= event.usser.user_name %></td>
         <td><%= event.name %></td>
         <td><%= event.description %></td>
+        <td><%= event.category.category_name %></td>
         <td><%= event.event_date %></td>
         <div>
           <td>
             <%= link_to 'Show', event_path(event) %>
             <%= link_to 'Edit', edit_event_path(event) %>
             <%= button_to 'Delete', event_path(event), class:"btn btn-danger",method: :delete %>
+
+            <% if logged_in? %>
+              <% if Enrollment.where("usser_id=? and event_id=?", current_user, event).blank? %>
+                <td><%= button_to "Enroll", ussers_enroll_path(id: session[:usser_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
+              <% else %>
+                <td><%= button_to "Unenroll", ussers_unenroll_path(current_user), params: { event_id: event.id }, method: "get", class: "btn btn-danger" %></td>
+              <% end %>
+            <% end %>
+
           </td>
         </div>
       </tr>

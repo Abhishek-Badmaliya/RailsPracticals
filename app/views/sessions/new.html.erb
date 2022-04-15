@@ -1,5 +1,5 @@
 <div class = "container" ><br>
-  <h2 align=center>Log Into Your Account</h2><hr><br>
+  <h2 class = "text-center mt-4" >Log Into Your Account</h2><br>
 
   <%= form_with scope: :session, url:login_path, local: true do |f| %>
 
@@ -20,9 +20,8 @@
     <div><br>
 
     <div class = "field form-group" >
-      <%= link_to 'Back', { controller: 'events', action: 'index'} %>
+      <%= link_to 'Cancel', { controller: 'events', action: 'index'} %>
     </div>
 
   <% end %>
-
 </div>

@@ -1,7 +1,17 @@
 class EventsController < ApplicationController
 
+  #add callbacks
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+	before_action :require_user, except: [:show, :index]
+	before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def index
-    @events = Event.all
+    #Searching Orders Record by Status
+    if params[:search]
+      @events = Event.where('category_id=?',params[:search])
+    else
+      @events = Event.order("event_date desc")
+    end
   end
 
   def show
@@ -12,8 +22,10 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  #define create method
   def create
-    @event = Event.create(event_params)
+    @event = Event.new(event_params)
+    @event.usser = current_user
     if @event.save
       flash[:notice] = "Event's details Added Successfully!"
       redirect_to events_path
@@ -27,6 +39,7 @@ class EventsController < ApplicationController
     set_event
   end
 
+  #define update method
   def update
     @event = Event.find(params[:id])
     if @event.update(event_params)
@@ -54,6 +67,13 @@ class EventsController < ApplicationController
     end
 
     def event_params
-      params.require(:event).permit(:name, :description, :event_date, :usser_id)
+      params.require(:event).permit(:name, :description, :event_date, :usser_id ,:category_id)
+    end
+
+    def require_same_user
+      if current_user !=  @event.usser
+        flash[:alert] = "You can only Edit and Delete your Events !"
+        redirect_to events_path
+      end
     end
 end

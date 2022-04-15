@@ -10,6 +10,17 @@ class Usser < ApplicationRecord
   #association
   has_many :events, dependent: :destroy
 
+  has_many :enrollments
+  
+  has_many :comments
+
+  has_many :likes
+
+  has_one :address
+  
+  accepts_nested_attributes_for :address, allow_destroy: true
+
   #adds methods to set and authenticate
   has_secure_password
+
 end

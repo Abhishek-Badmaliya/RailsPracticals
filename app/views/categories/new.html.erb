@@ -1,5 +1,5 @@
-<div class = "container" >
-  <h2 align=center>Create a new category</h2><hr><br>
+<div class = "container" ><br>
+  <h2 class = "text-center mt-4" >Create a new category</h2><br>
 
   <% if @category.errors.any? %>
     <h4> The following errors prevented the category details from being saved ! </h4>
@@ -25,7 +25,7 @@
 
     <div align=center>
       <div class = "field form-group" >
-        <%= link_to 'Back', { controller: 'categories', action: 'index'} %>
+        <%= link_to 'Cancel', { controller: 'categories', action: 'index'} %>
       </div>
     </div>
     

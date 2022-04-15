@@ -26,6 +26,10 @@ Rails.application.routes.draw do
   resources :customers
   resources :orders
 
+  #active record association
+  get "ussers/enroll"
+  get "ussers/unenroll"
+
   resources :events
   get 'signup', to: 'ussers#new'
   get 'login', to: 'sessions#new'
@@ -33,6 +37,9 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :ussers, except: [:new]
   resources :categories
+
+  get 'comments/like', to: 'comments#like'
+  resources :comments
   
   root "pages#home_page"
   get '/pages', to: "pages#home_page"
