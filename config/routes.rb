@@ -40,7 +40,13 @@ Rails.application.routes.draw do
 
   get 'comments/like', to: 'comments#like'
   resources :comments
+
   
   root "pages#home_page"
   get '/pages', to: "pages#home_page"
+
+
+  #rails routing
+  resources :anproducts
+  
 end

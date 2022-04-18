@@ -1,0 +1,2 @@
+module AnproductsHelper
+end

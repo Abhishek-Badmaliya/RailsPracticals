@@ -1,0 +1,39 @@
+<% if @anproduct.errors.any? %>
+  <h4> The following errors prevented the products details from being saved ! </h4>
+  <ul>
+    <% @anproduct.errors.full_messages.each do |msg| %>
+      <li> <%= msg %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with scope: :anproduct, url:anproducts_path, local: true do |f| %>
+
+  <div class = "field form-group" >
+    <%= f.label :product_name %>
+    <%= f.text_field :product_name, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <%= f.label :product_description %>
+    <%= f.text_field :product_description, class:"form-control" %>
+  </div><br>
+
+  <div class = "field form-group" >
+    <%= f.label :product_price %>
+    <%= f.number_field :product_price, class:"form-control" %>
+  </div><br><br>
+  
+  <div class = "text-center" >
+    <div class = "action" >
+      <%= f.submit class:"btn btn-secondary" %>
+    </div>
+  </div><br>
+
+  <div class = "text-center" >
+    <div class = "field form-group" >
+      <%= link_to 'Cancel', { controller: 'anproducts', action: 'index'} %>
+    </div>
+  </div>
+  
+<% end %>
