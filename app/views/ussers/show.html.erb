@@ -7,43 +7,40 @@
         <div class="text-center"> <img src="https://www.w3schools.com/bootstrap5/img_avatar3.png" width="100" class="rounded-circle"> </div>
           <div class="text-center mt-3"> 
             <h5 class="mt-2 mb-0"><%= @usser.user_name %></h5> <span><%= @usser.user_email %></span>
-            
-
-            <div><br>
-              <table class = "table table-bordered">
-                <thead class = "table-dark">
-                  <tr>
-                    <th> Event Name </th>
-                    <th> Event Description </th>
-                    <th> Event Date </th>
-                    <th> Event Actions </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @events.each do |event| %>
+              <div><br>
+                <table class = "table table-bordered">
+                  <thead class = "table-dark">
                     <tr>
-                      <td><%= event.name %></td>
-                      <td><%= event.description %></td>
-                      <td><%= event.event_date %></td>
-                      <div>
-                        <td>
-                          <%= link_to 'Show', event_path(event) %>
-                          <%= link_to 'Edit', edit_event_path(event) %>
-                          <%= button_to 'Delete', event_path(event), class:"btn btn-danger",method: :delete %>
-                        </td>
-                      </div>
+                      <th> Event Name </th>
+                      <th> Event Description </th>
+                      <th> Event Date </th>
+                      <th> Event Actions </th>
                     </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="px-4 mt-1">
-              <% if logged_in? %>
-                <%= link_to "Edit Profile", edit_usser_path, class:"btn btn-primary" %> </div><br>
-            </div>
-                
+                  </thead>
+                  <tbody>
+                    <% @events.each do |event| %>
+                      <tr>
+                        <td><%= event.name %></td>
+                        <td><%= event.description %></td>
+                        <td><%= event.event_date %></td>
+                        <div>
+                          <td>
+                            <%= link_to 'Show', event_path(event), class:"text-decoration-none" %>
+                            <%= link_to 'Edit', edit_event_path(event), class:"text-decoration-none" %>
+                            <%= button_to 'Delete', event_path(event), class:"btn btn-danger",method: :delete %>
+                          </td>
+                        </div>
+                      </tr>
+                    <% end %>
+                  </tbody>
+                </table>
+              </div>
+              <div class="px-4 mt-1">
+                <% if logged_in? %>
+                  <%= link_to "Edit Profile", edit_usser_path, class:"btn btn-primary" %> </div><br>
+              </div>
             <% end %>
+          </div>
       </div>
     </div>
   </div>
