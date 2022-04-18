@@ -48,5 +48,9 @@ Rails.application.routes.draw do
 
   #rails routing
   resources :anproducts
+  resources :anorders
   
+  namespace :business do
+    resources :ancustomers, only: [:create, :index, :edit]
+  end
 end

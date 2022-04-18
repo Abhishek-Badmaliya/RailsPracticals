@@ -1,0 +1,36 @@
+<h1 class = "text-center mt-4" > List of Orders</h1><br>
+
+<%= link_to "Add New Order", new_anorder_path, class:"btn btn-secondary btn-lg" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Order ID </th>
+      <th> Product Name </th>
+      <th> Description </th>
+      <th> Order Quantity </th>
+      <th> Total Price </th>
+      <th> Order Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @anorders.each do |anorder| %>
+      <tr>
+        <td><%= anorder.id %></td>
+        <td><%= anorder.anproduct.product_name %></td>
+        <td><%= anorder.anproduct.product_description %></td>
+        <td><%= anorder.quantity %></td>
+        <td><%= anorder.total_price %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', anorder_path(anorder), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_anorder_path(anorder), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', anorder_path(anorder), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

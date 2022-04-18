@@ -1,0 +1,31 @@
+<div class = "container-fluid" ><br>
+
+  <h2 class = "text-center mt-4" >Order Details</h2><hr><br>
+  <p class = "lead" >
+    <label><strong>Order ID : </strong></label>
+    <%= @anorder.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Name : </strong></label>
+    <%= @anorder.anproduct.product_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Description : </strong></label>
+    <%= @anorder.anproduct.product_description %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @anorder.anproduct.product_price %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Order Quantity : </strong></label>
+    <%= @anorder.anproduct.quantity %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Total Price : </strong></label>
+    <%= @anorder.total_price %>
+  </p>
+  
+  <%= link_to 'Back', { controller: 'anorders', action: 'index'}, class: "btn btn-primary" %>
+
+</div>

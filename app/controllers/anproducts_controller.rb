@@ -13,16 +13,16 @@ class AnproductsController < ApplicationController
   def create
     @anproduct = Anproduct.new(anproduct_params)
     if @anproduct.save
-      flash[:notice] = "Product Records Added Successfully!"
+      flash[:notice] = "Products records Added  Successfully!"
       redirect_to anproducts_path
     else
-      flash[:error] = "Product Records cant be Added!"
+      flash[:error] = "Product can not be added!"
       render :new
     end
   end
 
   def edit
-    set_anproduct
+    @anproduct = Anproduct.find(params[:id])
   end
 
   def show
@@ -37,6 +37,7 @@ class AnproductsController < ApplicationController
     else
       flash[:notice] = "Oops, Updation Operation Failed !"
       render :edit
+    end
   end
 
   def destroy
@@ -50,12 +51,12 @@ class AnproductsController < ApplicationController
   end
 
   private
-    def set_anproduct
-      @anproduct = Anproduct.find(params[:id])
-    end
-
-    def anproduct_params
-      params.require(:anproduct).permit(:product_name, :product_description, :product_price)
-    end
+  def set_anproduct
+    @anproduct = Anproduct.find(params[:id])
   end
+
+  def anproduct_params
+    params.require(:anproduct).permit(:product_name, :product_description, :product_price)
+  end
+  
 end

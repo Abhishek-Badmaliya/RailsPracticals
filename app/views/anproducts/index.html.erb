@@ -16,14 +16,16 @@
     <% @anproducts.each do |anproduct| %>
       <tr>
         <td><%= anproduct.id %></td>
-        <td><%= anproduct.anproduct_name %></td>
-        <td><%= anproduct.anproduct_description %></td>
-        <td><%= anproduct.anproduct_price %></td>
+        <td><%= anproduct.product_name %></td>
+        <td><%= anproduct.product_description %></td>
+        <td><%= anproduct.product_price %></td>
         <div>
           <td>
-            <%= link_to 'Show', anproduct_path(anproduct) %>
-            <%= link_to 'Edit', edit_anproduct_path(anproduct) %>
-            <%= button_to 'Delete', anproduct_path(anproduct), method: :delete, class: "btn btn-danger" %>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', anproduct_path(anproduct), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_anproduct_path(anproduct), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', anproduct_path(anproduct), method: :delete, class: "btn btn-danger" %>
+            </div>
           </td>
         </div>
       </tr>

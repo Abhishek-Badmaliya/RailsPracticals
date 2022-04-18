@@ -1,0 +1,36 @@
+<h1 class = "text-center mt-4" > List of Products</h1><br>
+
+<%= link_to "Add New Customer", new_business_ancustomers_path, class:"btn btn-secondary btn-lg" %><br><br>
+
+<%= link_to "search Customer", search_business_ancustomers_path, class:"btn btn-secondary btn-lg" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Customer ID </th>
+      <th> Customer Name </th>
+      <th> Customer Email </th>
+      <th> Phone Number </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ancustomers.each do |ancustomer| %>
+      <tr>
+        <td><%= ancustomer.id %></td>
+        <td><%= ancustomer.name %></td>
+        <td><%= ancustomer.email %></td>
+        <td><%= ancustomer.phone_number %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', preview_business_ancustomer_path(ancustomer), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_business_ancustomer_path(ancustomer), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', delete_customer_business_ancustomer_path(ancustomer), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
