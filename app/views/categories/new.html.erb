@@ -1,0 +1,29 @@
+<div class = "container" ><br>
+  <h2 class = "text-center mt-4" >Create a new category</h2><br>
+
+  <% if @category.errors.any? %>
+    <h4> The following errors prevented the category details from being saved ! </h4>
+    <ul>
+      <% @category.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :category, url:categories_path, local: true do |f| %>
+    <div class = "field form-group" >
+      <%= f.label :category_name %>
+      <%= f.text_field :category_name, class:"form-control" %>
+    </div><br>
+    <div align=center>
+      <div class = "action" >
+        <%= f.submit "Save Category", class:"btn btn-secondary" %>
+      </div>
+    </div><br>
+    <div align=center>
+      <div class = "field form-group" >
+        <%= link_to 'Cancel', { controller: 'categories', action: 'index'}, class:"text-decoration-none" %>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,20 @@
+<h2 class="text-center mt-4">Organisers Profiles</h2><hr>
+
+<div class="container">
+  <% @ussers.each do |usser|%>
+    <div class="row justify-content-md-center">
+      <div class="col-6 mt-4">
+        <div class=" text-left mb-5">
+          <div class="card-body text-white bg-dark mb-3">
+            <p class="card-title"><strong>User Name : </strong><%= link_to usser.user_name, usser_path(usser), class:"text-primary text-decoration-none" %><p>
+            <p class="card-text"><strong>User Email : </strong><%= usser.user_email%></p>          
+            <p class="card-text"><strong>Events Created : </strong><%= usser.events.count%></p>     
+          </div>
+          <div class="card-footer text-muted bg-dark mb-3 ">
+            <small> joined <%= time_ago_in_words(usser.created_at)%> ago</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div><hr>

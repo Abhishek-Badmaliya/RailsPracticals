@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_31_100524) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_14_160027) do
+  create_table "addresses", force: :cascade do |t|
+    t.string "usser_address"
+    t.integer "usser_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["usser_id"], name: "index_addresses_on_usser_id"
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -34,6 +42,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_100524) do
     t.index ["author_id"], name: "index_books_on_author_id"
   end
 
+  create_table "categories", force: :cascade do |t|
+    t.string "category_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "usser_id"
+    t.integer "likes"
+    t.index ["event_id"], name: "index_comments_on_event_id"
+  end
+
   create_table "customers", force: :cascade do |t|
     t.string "fname"
     t.string "lname"
@@ -53,6 +77,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_100524) do
     t.float "salary"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "enrollments", force: :cascade do |t|
+    t.integer "usser_id"
+    t.integer "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.date "event_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "usser_id"
+    t.integer "category_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["usser_id"], name: "index_events_on_usser_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -126,4 +169,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_31_100524) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "ussers", force: :cascade do |t|
+    t.string "user_name"
+    t.string "user_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+  end
+
+  add_foreign_key "addresses", "ussers"
+  add_foreign_key "events", "categories"
 end

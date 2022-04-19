@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   #root "users#index"
-  get '/users', to: "users#index"
+  #get '/users', to: "users#index"
 
   resources :authors
   resources :books
@@ -25,6 +25,22 @@ Rails.application.routes.draw do
   resources :product1s
   resources :customers
   resources :orders
+
+  #active record association
+  get "ussers/enroll"
+  get "ussers/unenroll"
+
+  resources :events
+  get 'signup', to: 'ussers#new'
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
+  resources :ussers, except: [:new]
+  resources :categories
+
+  get 'comments/like', to: 'comments#like'
+  resources :comments
   
-  root "pages#home"
+  root "pages#home_page"
+  get '/pages', to: "pages#home_page"
 end

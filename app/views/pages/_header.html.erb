@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Ruby on Rails</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link" href="pages">Home</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Associations
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to 'Events', events_path, class:"dropdown-item" %></li>
+            <li><%= link_to 'Ussers', ussers_path, class:"dropdown-item" %></li>
+            <li><%= link_to 'Category', categories_path, class:"dropdown-item" %></li>
+
+            <% if logged_in? %>
+              <li class="dropdown-item nav-item">
+                <a><%= link_to current_user.user_name, usser_path(current_user), class:"text-decoration-none" %></a>
+              </li>
+              <li class="nav-item">
+                <%= button_to 'Logout', logout_path, class: "btn btn-dark position-relative", method: :delete %>
+              </li>
+            <% else %>
+              <li class="dropdown-item nav-item">
+                <a><%= link_to 'Login', login_path, class:"text-decoration-none" %></a>
+              </li>
+              <li class="dropdown-item">
+                <%= link_to 'Sign Up', signup_path, class:"text-decoration-none" %>
+              </li>
+            <% end %>
+          </ul>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

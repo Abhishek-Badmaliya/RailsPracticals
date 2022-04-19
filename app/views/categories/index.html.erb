@@ -1,0 +1,27 @@
+<h2 class = "text-center mt-4" > List of Categories</h2><br>
+<%= link_to "Add Category", new_category_path, class:"btn btn-secondary btn-lg" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Category ID </th>
+      <th> Category Name </th>
+      <th> Category Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @categories.each do |category| %>
+      <tr>
+        <td><%= category.id %></td>
+        <td><%= category.category_name %></td>
+        <div>
+          <td>
+            <%= link_to 'Show', category_path(category), class:"text-decoration-none" %>
+            <%= link_to 'Edit', edit_category_path(category), class:"text-decoration-none" %>
+            <%= button_to 'Delete', category_path(category), method: :delete, class: "btn btn-danger" %>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
