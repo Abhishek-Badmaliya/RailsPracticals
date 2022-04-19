@@ -1,5 +1,5 @@
 <div class = "container" ><br>
-  <h2 class = "text-center mt-4" >Edit Order</h2><br>
+  <h2 class = "text-center mt-4" >Add Order Details</h2><br>
 
   <% if @anorder.errors.any? %>
     <h4> The following errors prevented the orders details from being saved ! </h4>
@@ -10,24 +10,25 @@
     </ul>
   <% end %>
 
-  <%= form_with scope: :anorder, url:anorders_path, local: true do |f| %>
+  <%= form_with model: [@anproduct, @anorder], local: true do |f| %>
     <div class = "field form-group" >
       <%= f.label :order_quantity %>
       <%= f.text_field :quantity, class:"form-control" %>
     </div><br>
     <div class = "field form-group" >
-      <%= f.label :total_price %>
-      <%= f.text_field :total_price, class:"form-control" %>
+      <%= f.label :product_name %> :<br>
+      <%= f.select :anproduct_id, Anproduct.all.map { |p| [p.product_name, p.id]} %>
     </div><br>
     <div class="text-center">
       <div class = "action" >
-        <%= f.submit "Edit", class:"btn btn-success" %>
+        <%= f.submit "Save", class:"btn btn-success" %>
       </div>
     </div><br>
     <div class="text-center">
       <div class = "field form-group" >
-        <%= link_to 'Cancel', { controller: 'anorders', action: 'index'}, class: "btn btn-danger" %>
+        <%= link_to 'Cancel', anproduct_anorders_path, class: "btn btn-danger" %>
       </div>
     </div>
   <% end %>
+  
 </div>

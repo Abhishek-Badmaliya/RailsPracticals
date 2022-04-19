@@ -19,13 +19,12 @@
   </p>
   <p class = "lead" >
     <label><strong>Order Quantity : </strong></label>
-    <%= @anorder.anproduct.quantity %>
+    <%= @anorder.quantity %>
   </p>
   <p class = "lead" >
     <label><strong>Total Price : </strong></label>
     <%= @anorder.total_price %>
   </p>
-  
-  <%= link_to 'Back', { controller: 'anorders', action: 'index'}, class: "btn btn-primary" %>
+  <%= link_to 'Back', anproduct_anorders_path, class: "btn btn-primary" %>
 
 </div>

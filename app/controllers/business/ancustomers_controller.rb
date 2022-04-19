@@ -1,11 +1,13 @@
-class Business:AncustomersController < ApplicationController
+class Business::AncustomersController < ApplicationController
   #add callback
-  before_action: set_ancustomer, only: [:preview, :edit, :update, :delete_customer]
+  before_action :set_ancustomer, only: [:preview, :edit, :update, :delete_customer]
 
+  #define index
   def index
     @ancustomers = Ancustomer.all
   end
 
+  #define new method
   def new
     @ancustomer = Ancustomer.new
   end
@@ -23,9 +25,10 @@ class Business:AncustomersController < ApplicationController
   def edit
   end
 
+  #define update method
   def update
-    @ancustomer = Ancustomer.new(ancustomer_params)
-    if @ancustomer.update
+    @ancustomer = Ancustomer.find(params[:id])
+    if @ancustomer.update(ancustomer_params)
       flash[:notice] = "Customer's Records Created Successfully !"
       redirect_to preview_business_ancustomer_path(@ancustomer)
     else
@@ -33,13 +36,20 @@ class Business:AncustomersController < ApplicationController
     end
   end
 
+  #define preview method for show details
+  def preview
+    @ancustomer = Ancustomer.find(params[:id])
+  end
+
+  #define method for destroy the record
   def delete_customer
     @ancustomer.destroy
     redirect_to business_ancustomers_path
   end
 
+  #define search method for search the records
   def search
-    @ancustomer = Ancustomer.where('name LIKE ?', params[:search_name] + "%")
+    @ancustomers = Ancustomer.where('name LIKE ?', params[:search_name])
   end
 
   private

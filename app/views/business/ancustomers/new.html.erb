@@ -1,0 +1,38 @@
+<div class = "container" ><br>
+  <h2 class = "text-center mt-4" >Create a new Customer</h2><br>
+
+  <% if @ancustomer.errors.any? %>
+    <h4> The following errors prevented the customers details from being saved ! </h4>
+    <ul>
+      <% @ancustomer.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model:[:business, @ancustomer], data: {turbo: false}, local: true) do |f| %>
+    <div class = "field form-group" >
+      <%= f.label :customer_name %>
+      <%= f.text_field :name, class:"form-control" %>
+    </div><br>
+    <div class = "field form-group" >
+      <%= f.label :customer_email %>
+      <%= f.text_field :email, class:"form-control" %>
+    </div><br>
+    <div class = "field form-group" >
+      <%= f.label :phone_number %>
+      <%= f.number_field :phone_number, class:"form-control" %>
+    </div><br><br>
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Save", class:"btn btn-success" %>
+      </div>
+    </div><br>
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Cancel', { controller: 'ancustomers', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

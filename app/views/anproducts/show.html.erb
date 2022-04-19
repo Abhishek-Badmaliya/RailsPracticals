@@ -16,8 +16,41 @@
   <p class = "lead" >
     <label><strong>Product Price : </strong></label>
     <%= @anproduct.product_price %>
-  </p>
-  
+  </p>  
   <%= link_to 'Back', { controller: 'anproducts', action: 'index'}, class: "btn btn-primary" %>
-
+  
+  <br><h5 class = "text-left mt-4" > Order Details </h5>
+  <table class = "table table-bordered">
+    <thead class = "table-light text-center">
+      <tr>
+        <th> Order ID </th>
+        <th> Product Name </th>
+        <th> Description </th>
+        <th> Order Quantity </th>
+        <th> Total Price </th>
+        <th> Order Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Anorder.where('anproduct_id = ?', @anproduct).each do |anorder| %>
+        <tr>
+          <td><%= anorder.id %></td>
+          <td><%= anorder.anproduct.product_name %></td>
+          <td><%= anorder.anproduct.product_description %></td>
+          <td><%= anorder.quantity %></td>
+          <td><%= anorder.total_price %></td>
+          <div>
+            <td>
+              <div class="btn-group" role="group">
+                <%= link_to 'Show', anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-info" %>
+                <%= link_to 'Edit', edit_anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-light" %>
+                <%= button_to 'Delete', anproduct_anorder_path(anorder.anproduct ,anorder), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </td>
+          </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
 </div>

@@ -1,5 +1,5 @@
 class AnproductsController < ApplicationController
-
+  #add callback
   before_action :set_anproduct, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -50,6 +50,7 @@ class AnproductsController < ApplicationController
     end
   end
 
+  #use private
   private
   def set_anproduct
     @anproduct = Anproduct.find(params[:id])
@@ -57,6 +58,5 @@ class AnproductsController < ApplicationController
 
   def anproduct_params
     params.require(:anproduct).permit(:product_name, :product_description, :product_price)
-  end
-  
+  end  
 end

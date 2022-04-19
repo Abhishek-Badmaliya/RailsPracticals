@@ -42,15 +42,24 @@ Rails.application.routes.draw do
   resources :comments
 
   
-  root "pages#home_page"
-  get '/pages', to: "pages#home_page"
+  #root "pages#home_page"
+  #get '/pages', to: "pages#home_page"
 
 
   #rails routing
-  resources :anproducts
-  resources :anorders
-  
-  namespace :business do
-    resources :ancustomers, only: [:create, :index, :edit]
+  #add nested routes
+  resources :anproducts do
+    resources :anorders
   end
+  
+  #use namespace
+  # namespace :business do
+  #   resources :ancustomers, only: [:create, :index, :edit]
+  # end
+
+  #resources :ancustomers, except: [:create, :index, :edit]
+  #get '/preview', to: "business/ancustomers#preview", as: :preview
+  #get '/search', to: "business/ancustomers/search#search", as: :search
+
+  root to: "anproducts#index"
 end

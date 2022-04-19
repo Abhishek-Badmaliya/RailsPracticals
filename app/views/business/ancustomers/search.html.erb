@@ -1,0 +1,33 @@
+<h2 class = "text-center mt-4" > Search Customer </h2><hr><br>
+
+<%= form_tag(search_business_ancustomers_path, :method => "get") do%>
+  <label>Enter the Name</label><br>
+  <%= text_field_tag :search_name, params[:search_name] %>
+  <%= submit_tag "Search", class: "btn btn-success" %>
+<% end %><br><br>
+
+<h5 class = "text-left mt-4" > Records </h5><br>
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Customer ID </th>
+      <th> Customer Name </th>
+      <th> Customer Email </th>
+      <th> Phone Number </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ancustomers.each do |ancustomer| %>
+      <tr>
+        <td><%= ancustomer.id %></td>
+        <td><%= ancustomer.name %></td>
+        <td><%= ancustomer.email %></td>
+        <td><%= ancustomer.phone_number %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+
+<div class= "text-center">
+  <%= link_to 'Back', { controller: 'ancustomers', action: 'index'}, class: "btn btn-danger" %>
+</div>
