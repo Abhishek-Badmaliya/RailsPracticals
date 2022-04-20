@@ -1,6 +1,6 @@
 <h2 class = "text-center mt-4" > Search Customer </h2><hr><br>
 
-<%= form_tag(search_business_ancustomers_path, :method => "get") do%>
+<%= form_tag(business_ancustomers_search_path, :method => "get") do%>
   <label>Enter the Name</label><br>
   <%= text_field_tag :search_name, params[:search_name] %>
   <%= submit_tag "Search", class: "btn btn-success" %>

@@ -18,8 +18,10 @@
     <%= @anproduct.product_price %>
   </p>  
   <%= link_to 'Back', { controller: 'anproducts', action: 'index'}, class: "btn btn-primary" %>
+
+  <%= link_to "Add New Order", new_anproduct_anorder_path(@anproduct,@anorder), class:"btn btn-secondary" %><br><br>
   
-  <br><h5 class = "text-left mt-4" > Order Details </h5>
+  <h5 class = "text-center mt-4" > Order Details </h5><br>
   <table class = "table table-bordered">
     <thead class = "table-light text-center">
       <tr>

@@ -1,7 +1,7 @@
 <h1 class = "text-center mt-4" > List of Customers</h1><br>
 
-<%= link_to "Add New Customer", new_business_ancustomers_path, class:"btn btn-secondary" %><br><br>
-<%= link_to "Search Customer", search_business_ancustomers_path, class:"btn btn-secondary" %><br><br>
+<%= link_to "Add New Customer", new_business_ancustomer_path, class:"btn btn-secondary" %><br><br>
+<%= link_to "Search Customer", business_ancustomers_search_path, class:"btn btn-secondary" %><br><br>
 
 <table class = "table table-bordered">
   <thead class = "table-dark text-center">
@@ -23,9 +23,9 @@
         <div>
           <td>
             <div class="btn-group" role="group">
-              <%= link_to 'Show', business_ancustomer_path(ancustomer), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Preview', business_path(ancustomer), class: "text-decoration-none btn btn-info" %>
               <%= link_to 'Edit', edit_business_ancustomer_path(ancustomer), class: "text-decoration-none btn btn-light" %>
-              <%= button_to 'Delete', delete_customer_business_ancustomer_path(ancustomer), method: :delete, class: "btn btn-danger" %>
+              <%= button_to 'Delete', business_path(ancustomer), method: :delete, class: "btn btn-danger" %>
             </div>
           </td>
         </div>

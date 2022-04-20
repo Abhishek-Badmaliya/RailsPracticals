@@ -16,7 +16,7 @@ class Business::AncustomersController < ApplicationController
     @ancustomer = Ancustomer.new(ancustomer_params)
     if @ancustomer.save
       flash[:notice] = "Customer's Records Created Successfully !"
-      redirect_to preview_business_ancustomer_path(@ancustomer)
+      redirect_to business_ancustomers_path
     else
       render new_business_ancustomers_path
     end
@@ -29,8 +29,8 @@ class Business::AncustomersController < ApplicationController
   def update
     @ancustomer = Ancustomer.find(params[:id])
     if @ancustomer.update(ancustomer_params)
-      flash[:notice] = "Customer's Records Created Successfully !"
-      redirect_to preview_business_ancustomer_path(@ancustomer)
+      flash[:notice] = "Customer's Records Updated Successfully !"
+      redirect_to business_ancustomers_path
     else
       render edit_business_ancustomers_path
     end
@@ -43,6 +43,7 @@ class Business::AncustomersController < ApplicationController
 
   #define method for destroy the record
   def delete_customer
+    @ancustomer = Ancustomer.find(params[:id])
     @ancustomer.destroy
     redirect_to business_ancustomers_path
   end

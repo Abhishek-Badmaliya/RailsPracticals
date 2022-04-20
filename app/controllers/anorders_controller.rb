@@ -31,6 +31,7 @@ class AnordersController < ApplicationController
   end
 
   def update
+    @anproduct = Anproduct.find(params[:anproduct_id])
     @anorder = Anorder.find(params[:id])
     if @anorder.update(anorder_params)
       flash[:notice] = "Order's records Updated Successfully !"

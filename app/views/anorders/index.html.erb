@@ -1,7 +1,5 @@
 <h1 class = "text-center mt-4" > List of Orders</h1><br>
 
-<%= link_to "Add New Order", new_anproduct_anorder_path, class:"btn btn-secondary" %><br><br>
-
 <table class = "table table-bordered">
   <thead class = "table-dark text-center">
     <tr>
@@ -10,7 +8,6 @@
       <th> Description </th>
       <th> Order Quantity </th>
       <th> Total Price </th>
-      <th> Order Actions </th>
     </tr>
   </thead>
   <tbody>
@@ -21,16 +18,11 @@
         <td><%= anorder.anproduct.product_description %></td>
         <td><%= anorder.quantity %></td>
         <td><%= anorder.total_price %></td>
-        <div>
-          <td>
-            <div class="btn-group" role="group">
-              <%= link_to 'Show', anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-info" %>
-              <%= link_to 'Edit', edit_anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-light" %>
-              <%= button_to 'Delete', anproduct_anorder_path(anorder.anproduct ,anorder), method: :delete, class: "btn btn-danger" %>
-            </div>
-          </td>
-        </div>
       </tr>
     <% end %>
   </tbody>
-</table>
+</table><br>
+
+<div class="text-center">
+  <%= link_to 'Go Back to Products', anproducts_path, class: "btn btn-primary" %>
+</div>

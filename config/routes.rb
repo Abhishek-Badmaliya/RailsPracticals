@@ -53,13 +53,12 @@ Rails.application.routes.draw do
   end
   
   #use namespace
-  # namespace :business do
-  #   resources :ancustomers, only: [:create, :index, :edit]
-  # end
-
-  #resources :ancustomers, except: [:create, :index, :edit]
-  #get '/preview', to: "business/ancustomers#preview", as: :preview
-  #get '/search', to: "business/ancustomers/search#search", as: :search
+  namespace :business do
+    get '/ancustomers/:id/preview', to: "ancustomers#preview"
+    get '/ancustomers/search', to: "ancustomers#search"
+    delete '/ancustomers/:id/preview', to: "ancustomers#delete_customer"
+    resources :ancustomers, only: [:create, :index, :edit, :update, :new]
+  end
 
   root to: "anproducts#index"
 end
