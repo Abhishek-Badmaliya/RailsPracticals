@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   resources :comments
 
   
-  #root "pages#home_page"
-  #get '/pages', to: "pages#home_page"
+  root "pages#home_page"
+  get '/pages', to: "pages#home_page"
 
 
   #rails routing
@@ -60,5 +60,10 @@ Rails.application.routes.draw do
     resources :ancustomers, only: [:create, :index, :edit, :update, :new]
   end
 
-  root to: "anproducts#index"
+  #root to: "anproducts#index"
+
+  #layouts and rendering
+  devise_for :nusers
+  resources :nproducts
+  resources :norders
 end

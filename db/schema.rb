@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_18_144340) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_21_125809) do
   create_table "addresses", force: :cascade do |t|
     t.string "usser_address"
     t.integer "usser_id"
@@ -148,6 +148,35 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_144340) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
+  create_table "norders", force: :cascade do |t|
+    t.integer "nproduct_id", null: false
+    t.integer "quantity"
+    t.float "total_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nproduct_id"], name: "index_norders_on_nproduct_id"
+  end
+
+  create_table "nproducts", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "nusers", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_nusers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_nusers_on_reset_password_token", unique: true
+  end
+
   create_table "orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "total_price"
@@ -203,4 +232,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_18_144340) do
 
   add_foreign_key "addresses", "ussers"
   add_foreign_key "events", "categories"
+  add_foreign_key "norders", "nproducts"
 end
