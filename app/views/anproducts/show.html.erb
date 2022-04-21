@@ -1,0 +1,58 @@
+<div class = "container-fluid" ><br>
+
+  <h2 class = "text-center mt-4" >Product Details</h2><hr><br>
+  <p class = "lead" >
+    <label><strong>Product ID : </strong></label>
+    <%= @anproduct.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Name : </strong></label>
+    <%= @anproduct.product_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Description : </strong></label>
+    <%= @anproduct.product_description %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @anproduct.product_price %>
+  </p>  
+  <%= link_to 'Back', { controller: 'anproducts', action: 'index'}, class: "btn btn-primary" %>
+
+  <%= link_to "Add New Order", new_anproduct_anorder_path(@anproduct,@anorder), class:"btn btn-secondary" %><br><br>
+  
+  <h5 class = "text-center mt-4" > Order Details </h5><br>
+  <table class = "table table-bordered">
+    <thead class = "table-light text-center">
+      <tr>
+        <th> Order ID </th>
+        <th> Product Name </th>
+        <th> Description </th>
+        <th> Order Quantity </th>
+        <th> Total Price </th>
+        <th> Order Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <% Anorder.where('anproduct_id = ?', @anproduct).each do |anorder| %>
+        <tr>
+          <td><%= anorder.id %></td>
+          <td><%= anorder.anproduct.product_name %></td>
+          <td><%= anorder.anproduct.product_description %></td>
+          <td><%= anorder.quantity %></td>
+          <td><%= anorder.total_price %></td>
+          <div>
+            <td>
+              <div class="btn-group" role="group">
+                <%= link_to 'Show', anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-info" %>
+                <%= link_to 'Edit', edit_anproduct_anorder_path(anorder.anproduct, anorder), class: "text-decoration-none btn btn-light" %>
+                <%= button_to 'Delete', anproduct_anorder_path(anorder.anproduct ,anorder), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </td>
+          </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  
+</div>

@@ -1,0 +1,33 @@
+<h1 class = "text-center mt-4" > List of Products</h1><br>
+<%= link_to "Add New Product", new_anproduct_path, class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Product ID </th>
+      <th> Product Name </th>
+      <th> Description </th>
+      <th> Product Price </th>
+      <th> Product Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @anproducts.each do |anproduct| %>
+      <tr>
+        <td><%= anproduct.id %></td>
+        <td><%= anproduct.product_name %></td>
+        <td><%= anproduct.product_description %></td>
+        <td><%= anproduct.product_price %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', anproduct_path(anproduct), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_anproduct_path(anproduct), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', anproduct_path(anproduct), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

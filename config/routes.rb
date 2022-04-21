@@ -40,7 +40,25 @@ Rails.application.routes.draw do
 
   get 'comments/like', to: 'comments#like'
   resources :comments
+
   
-  root "pages#home_page"
-  get '/pages', to: "pages#home_page"
+  #root "pages#home_page"
+  #get '/pages', to: "pages#home_page"
+
+
+  #rails routing
+  #add nested routes
+  resources :anproducts do
+    resources :anorders
+  end
+  
+  #use namespace
+  namespace :business do
+    get '/ancustomers/:id/preview', to: "ancustomers#preview"
+    get '/ancustomers/search', to: "ancustomers#search"
+    delete '/ancustomers/:id/preview', to: "ancustomers#delete_customer"
+    resources :ancustomers, only: [:create, :index, :edit, :update, :new]
+  end
+
+  root to: "anproducts#index"
 end

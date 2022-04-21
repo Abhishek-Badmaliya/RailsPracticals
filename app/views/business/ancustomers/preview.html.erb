@@ -1,0 +1,22 @@
+<div class = "container-fluid" ><br>
+
+  <h2 class = "text-center mt-4" >Customer Details</h2><hr><br>
+  <p class = "lead" >
+    <label><strong>Customer ID : </strong></label>
+    <%= @ancustomer.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Customer Name : </strong></label>
+    <%= @ancustomer.name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Customer Email : </strong></label>
+    <%= @ancustomer.email %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Phone Number : </strong></label>
+    <%= @ancustomer.phone_number %>
+  </p>
+  <%= link_to 'Back', { controller: 'ancustomers', action: 'index'}, class: "btn btn-primary" %>
+
+</div>

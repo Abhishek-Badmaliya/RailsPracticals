@@ -1,0 +1,28 @@
+<h1 class = "text-center mt-4" > List of Orders</h1><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-dark text-center">
+    <tr>
+      <th> Order ID </th>
+      <th> Product Name </th>
+      <th> Description </th>
+      <th> Order Quantity </th>
+      <th> Total Price </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @anorders.each do |anorder| %>
+      <tr>
+        <td><%= anorder.id %></td>
+        <td><%= anorder.anproduct.product_name %></td>
+        <td><%= anorder.anproduct.product_description %></td>
+        <td><%= anorder.quantity %></td>
+        <td><%= anorder.total_price %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>
+
+<div class="text-center">
+  <%= link_to 'Go Back to Products', anproducts_path, class: "btn btn-primary" %>
+</div>
