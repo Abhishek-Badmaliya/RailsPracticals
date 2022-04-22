@@ -69,4 +69,7 @@ Rails.application.routes.draw do
 
   root "nusers#homepage"
   get 'homepage', to: "nusers#homepage"
+
+  #routes for action view form helpers
+  resources :nemployees
 end
