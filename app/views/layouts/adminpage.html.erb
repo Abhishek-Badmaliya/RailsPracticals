@@ -1,0 +1,12 @@
+<div class="text-center">
+  <div class="card text-center">
+    <div class="card-header bg-dark text-white">
+      Welcome, <%= current_nuser.role%> </strong> <%= current_nuser.email%> !
+    </div>
+    <div class="card-body">
+      <p class="card-text">You can create update show and delete the Events and Orders !!!</p>
+      <%= link_to 'Products', nproducts_path, class:"btn btn-primary" %>
+      <%= link_to 'Orders', norders_path, class:"btn btn-primary" %>
+    </div>
+  </div>
+</div>

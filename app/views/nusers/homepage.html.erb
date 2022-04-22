@@ -1,0 +1,18 @@
+<div class="text-center">
+  <% if current_nuser %>
+    <div class="text-center">
+      <p><strong>Welcome, <%= current_nuser.role%> </strong> <%= current_nuser.email%> !</p>
+    </div>
+  <% else %>
+    <div class="card text-center">
+      <div class="card-header bg-dark text-white">
+        Welcome to Layouts & Rendering !
+      </div>
+      <div class="card-body">
+        <p class="card-text">You have to create a new account by Sign Up or if already have an account then Sign In !</p>
+        <%= link_to 'Sign up', new_nuser_registration_path, class:"btn btn-primary" %>
+        <%= link_to 'Sign in', new_nuser_session_path, class:"btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>

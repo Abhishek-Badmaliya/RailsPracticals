@@ -1,6 +1,5 @@
-<div class = "container-fluid" ><br>
-
-  <h2 class = "text-center mt-4" >Order Details</h2><hr><br>
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >Order Details</h2><hr>
   <p class = "lead" >
     <label><strong>Order ID : </strong></label>
     <%= @norder.id %>
@@ -25,6 +24,7 @@
     <label><strong>Total Price : </strong></label>
     <%= @norder.total_price %>
   </p>
-  <%= link_to 'Back', norders_path, class: "btn btn-primary" %>
-
+  <div class = "text-center">
+    <%= link_to 'Back', norders_path, class: "btn btn-primary" %>
+  </div>
 </div>

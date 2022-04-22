@@ -12,11 +12,11 @@
 
   <%= form_with model: [@nproduct, @norder], local: true do |f| %>
     <div class = "field form-group" >
-      <%= f.label :order_quantity %>
+      <strong><%= f.label :order_quantity %></strong>
       <%= f.text_field :quantity, class:"form-control" %>
     </div><br>
     <div class = "field form-group" >
-      <%= f.label :product_name %> :<br>
+      <strong><%= f.label :product_name %></strong><br>
       <%= f.select :nproduct_id, Nproduct.all.map { |p| [p.name, p.id]} %>
     </div><br>
     <div class="text-center">

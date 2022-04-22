@@ -1,5 +1,8 @@
 <h2 class = "text-center mt-4" > List of Products</h2><br>
-<%= link_to "Add New Product", new_nproduct_path, class:"btn btn-secondary" %><br><br>
+
+<% if current_nuser.role == "admin"%>
+  <%= link_to "Add New Product", new_nproduct_path, class:"btn btn-secondary" %><br><br>
+<% end %>
 
 <table class = "table table-bordered">
   <thead class = "table-light text-center">
@@ -8,7 +11,7 @@
       <th> Product Name </th>
       <th> Description </th>
       <th> Product Price </th>
-      <th> Product Actions </th>
+      <th> Actions </th>
     </tr>
   </thead>
   <tbody>
@@ -22,8 +25,10 @@
           <td>
             <div class="btn-group" role="group">
               <%= link_to 'Show', nproduct_path(nproduct), class: "text-decoration-none btn btn-info" %>
-              <%= link_to 'Edit', edit_nproduct_path(nproduct), class: "text-decoration-none btn btn-dark" %>
-              <%= button_to 'Delete', nproduct_path(nproduct), method: :delete, class: "btn btn-danger" %>
+              <% if current_nuser.role == "admin"%>
+                <%= link_to 'Edit', edit_nproduct_path(nproduct), class: "text-decoration-none btn btn-dark" %>
+                <%= button_to 'Delete', nproduct_path(nproduct), method: :delete, class: "btn btn-danger" %>
+              <% end %>
             </div>
           </td>
         </div>

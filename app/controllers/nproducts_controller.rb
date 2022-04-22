@@ -1,6 +1,7 @@
 class NproductsController < ApplicationController
-  #add callback
+  #add callbacks mwthods
   before_action :set_nproduct, only: [:show, :edit, :update, :destroy]
+  before_action :require_admin, except: [:index, :show]
 
   def index
     @nproducts = Nproduct.all
@@ -54,6 +55,13 @@ class NproductsController < ApplicationController
   private
   def set_nproduct
     @nproduct = Nproduct.find(params[:id])
+  end
+
+  #define method for perform the actions
+  def require_admin
+    if current_nuser.role != "admin"
+      flash[:alert] = "Requires login to perform that particular action !"
+    end
   end
 
   def nproduct_params

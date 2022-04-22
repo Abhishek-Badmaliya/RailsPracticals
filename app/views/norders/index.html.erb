@@ -1,6 +1,8 @@
 <h2 class = "text-center mt-4" > List of Orders</h2><br>
 
-<%= link_to "Add New Order", new_norder_path, class:"btn btn-secondary" %><br><br>
+<% if current_nuser.role == "admin"%>
+  <%= link_to "Add New Order", new_norder_path, class:"btn btn-secondary" %><br><br>
+<% end %>
 
 <table class = "table table-bordered">
   <thead class = "table-light text-center">
@@ -24,8 +26,10 @@
         <td>
           <div class="btn-group" role="group">
             <%= link_to 'Show', norder_path(norder), class: "text-decoration-none btn btn-info" %>
-            <%= link_to 'Edit', edit_norder_path(norder), class: "text-decoration-none btn btn-light" %>
-            <%= button_to 'Delete', norder_path(norder), method: :delete, class: "btn btn-danger" %>
+            <% if current_nuser.role == "admin"%>
+              <%= link_to 'Edit', edit_norder_path(norder), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', norder_path(norder), method: :delete, class: "btn btn-danger" %>
+            <% end %>
           </div>
         </td>
       </tr>

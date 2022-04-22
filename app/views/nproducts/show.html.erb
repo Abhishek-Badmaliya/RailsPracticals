@@ -1,5 +1,4 @@
 <div class = "container-fluid" >
-
   <h2 class = "text-center mt-4" >Product Details</h2><hr>
   <p class = "lead" >
     <label><strong>Product ID : </strong></label>
@@ -18,4 +17,7 @@
     <%= @nproduct.price %>
   </p>
 
-<%= link_to 'Back', { controller: 'nproducts', action: 'index'}, class: "btn btn-primary" %>
+  <div class = "text-center">
+    <%= link_to 'Back', { controller: 'nproducts', action: 'index'}, class: "btn btn-primary" %>
+  </div>
+</div>
