@@ -42,8 +42,8 @@ Rails.application.routes.draw do
   resources :comments
 
   
-  #root "pages#home_page"
-  #get '/pages', to: "pages#home_page"
+  root "pages#home_page"
+  get '/pages', to: "pages#home_page"
 
 
   #rails routing
@@ -67,9 +67,10 @@ Rails.application.routes.draw do
   resources :nproducts
   resources :norders
 
-  root "nusers#homepage"
+  #root "nusers#homepage"
   get 'homepage', to: "nusers#homepage"
 
   #routes for action view form helpers
   resources :nemployees
+  get 'search', to: "nemployees#search"
 end

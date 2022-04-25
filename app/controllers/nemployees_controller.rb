@@ -8,12 +8,13 @@ class NemployeesController < ApplicationController
 
   def new
     @nemployee = Nemployee.new
+    @nemployee.naddresses.build
   end
 
   def create
     @nemployee = Nemployee.new(nemployee_params)
     if @nemployee.save
-      flash[:notice] = "Employees Details Added Successfully !"
+      flash[:notice] = "Employees Details has been Added Successfully !"
       redirect_to nemployees_path
     else
       render :new
@@ -25,13 +26,12 @@ class NemployeesController < ApplicationController
   end
 
   def show
-    @nemployee = Nemployee.find(params[:id])
   end
 
   def update
     @nemployee = Nemployee.find(params[:id])
-    if @employee.update(employee_params)
-      flash[:notice] = "Employee's Records Updated Successfully !"
+    if @nemployee.update(nemployee_params)
+      flash[:notice] = "Employee's Records has been Updated Successfully !"
       redirect_to nemployees_path
     else
       render :edit
@@ -45,6 +45,14 @@ class NemployeesController < ApplicationController
 
   #define search method
   def search
+    if params[:query]
+      if params[:query] == ""
+        flash[:alert] = "Please enter the name !!!"
+        redirect_to search_path
+      else
+        @nemployees = Nemployee.where('employee_name LIKE ?', params[:query] + "%")
+      end
+    end
   end
 
   private
@@ -54,6 +62,6 @@ class NemployeesController < ApplicationController
 
     #define parameters
     def nemployee_params
-      params.require(:nemployee).permit(:employee_name, :email, :password, :gender, :hobbies, :address, :mobile_number, :birth_date, :document)
+      params.require(:nemployee).permit(:employee_name, :email, :password, :gender, :address, :mobile_number, :birth_date, :document, naddresses_attributes:[:id, :house_name, :street_name, :road] ,hobbies: [])
     end
 end

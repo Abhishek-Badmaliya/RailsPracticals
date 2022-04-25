@@ -1,2 +1,40 @@
-<h1>Nemployees#show</h1>
-<p>Find me in app/views/nemployees/show.html.erb</p>
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >Employee Details</h2><hr>
+  
+  <p class = "lead" >
+    <label><strong>Employee ID : </strong></label>
+    <%= @nemployee.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Name : </strong></label>
+    <%= @nemployee.employee_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Email : </strong></label>
+    <%= @nemployee.email %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Birth Date : </strong></label>
+    <%= @nemployee.birth_date %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Gender : </strong></label>
+    <%= @nemployee.gender %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Hobbies : </strong></label>
+    <%= @nemployee.hobbies %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Address : </strong></label>
+    <%= @nemployee.address %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Employee Contact : </strong></label>
+    <%= @nemployee.mobile_number %>
+  </p>
+
+  <div class = "text-center">
+    <%= link_to 'Back', { controller: 'nemployees', action: 'index'}, class: "btn btn-primary" %>
+  </div>
+</div>
