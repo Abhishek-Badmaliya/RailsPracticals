@@ -1,0 +1,31 @@
+<h2 class = "text-center mt-4" > List of Users</h2><br>
+<%= link_to "Add New User", new_newuser_path, class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> ID </th>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @newusers.each do |newuser| %>
+      <tr>
+        <td><%= newuser.id %></td>
+        <td><%= newuser.name %></td>
+        <td><%= newuser.email %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', newuser_path(newuser), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_newuser_path(newuser), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', newuser_path(newuser), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
