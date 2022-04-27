@@ -1,0 +1,38 @@
+<div class = "container" >
+  <h2 class = "text-center mt-4" >Create a new Product</h2>
+
+  <% if @nproduct.errors.any? %>
+    <h4> The following errors prevented the products details from being saved ! </h4>
+    <ul>
+      <% @nproduct.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with scope: :nproduct, url:nproducts_path, local: true do |f| %>
+    <div class = "field form-group" >
+      <strong><%= f.label :product_name %></strong>
+      <%= f.text_field :name, class:"form-control" %>
+    </div><br>
+    <div class = "field form-group" >
+      <strong><%= f.label :product_description %></strong>
+      <%= f.text_field :description, class:"form-control" %>
+    </div><br>
+    <div class = "field form-group" >
+      <strong><%= f.label :product_price %></strong>
+      <%= f.number_field :price, class:"form-control" %>
+    </div><br><br>
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Save", class:"btn btn-success" %>
+      </div>
+    </div><br>
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Cancel', { controller: 'nproducts', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

@@ -48,6 +48,24 @@
           </ul>
         </li>
 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Layouts & Rendering
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to 'Home Page', homepage_path, class:"dropdown-item" %></li>
+            <% if nuser_signed_in?%>
+              <li><%= link_to 'Products', nproducts_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Orders', norders_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Edit Profile', edit_nuser_registration_path, class:"dropdown-item" %></li>
+              <li><%= button_to 'Sign Out', destroy_nuser_session_path, class:"dropdown-item", method: :delete %></li>
+            <% else %>
+              <li><%= link_to 'Sign up', new_nuser_registration_path, class:"dropdown-item" %></li>
+              <li><%= link_to 'Sign in', new_nuser_session_path, class:"dropdown-item" %></li>
+            <% end %>
+          </ul>
+        </li>
+
       </ul>
     </div>
   </div>

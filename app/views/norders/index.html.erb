@@ -1,0 +1,38 @@
+<h2 class = "text-center mt-4" > List of Orders</h2><br>
+
+<% if current_nuser.role == "admin"%>
+  <%= link_to "Add New Order", new_norder_path, class:"btn btn-secondary" %><br><br>
+<% end %>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> Order ID </th>
+      <th> Product Name </th>
+      <th> Description </th>
+      <th> Order Quantity </th>
+      <th> Total Price </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @norders.each do |norder| %>
+      <tr>
+        <td><%= norder.id %></td>
+        <td><%= norder.nproduct.name %></td>
+        <td><%= norder.nproduct.description %></td>
+        <td><%= norder.quantity %></td>
+        <td><%= norder.total_price %></td>
+        <td>
+          <div class="btn-group" role="group">
+            <%= link_to 'Show', norder_path(norder), class: "text-decoration-none btn btn-info" %>
+            <% if current_nuser.role == "admin"%>
+              <%= link_to 'Edit', edit_norder_path(norder), class: "text-decoration-none btn btn-light" %>
+              <%= button_to 'Delete', norder_path(norder), method: :delete, class: "btn btn-danger" %>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table><br>

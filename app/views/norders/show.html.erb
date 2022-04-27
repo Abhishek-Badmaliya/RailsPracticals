@@ -1,0 +1,30 @@
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >Order Details</h2><hr>
+  <p class = "lead" >
+    <label><strong>Order ID : </strong></label>
+    <%= @norder.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Name : </strong></label>
+    <%= @norder.nproduct.name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Description : </strong></label>
+    <%= @norder.nproduct.description %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @norder.nproduct.price %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Order Quantity : </strong></label>
+    <%= @norder.quantity %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Total Price : </strong></label>
+    <%= @norder.total_price %>
+  </p>
+  <div class = "text-center">
+    <%= link_to 'Back', norders_path, class: "btn btn-primary" %>
+  </div>
+</div>

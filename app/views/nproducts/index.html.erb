@@ -1,0 +1,38 @@
+<h2 class = "text-center mt-4" > List of Products</h2><br>
+
+<% if current_nuser.role == "admin"%>
+  <%= link_to "Add New Product", new_nproduct_path, class:"btn btn-secondary" %><br><br>
+<% end %>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> Product ID </th>
+      <th> Product Name </th>
+      <th> Description </th>
+      <th> Product Price </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @nproducts.each do |nproduct| %>
+      <tr>
+        <td><%= nproduct.id %></td>
+        <td><%= nproduct.name %></td>
+        <td><%= nproduct.description %></td>
+        <td><%= nproduct.price %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', nproduct_path(nproduct), class: "text-decoration-none btn btn-info" %>
+              <% if current_nuser.role == "admin"%>
+                <%= link_to 'Edit', edit_nproduct_path(nproduct), class: "text-decoration-none btn btn-dark" %>
+                <%= button_to 'Delete', nproduct_path(nproduct), method: :delete, class: "btn btn-danger" %>
+              <% end %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

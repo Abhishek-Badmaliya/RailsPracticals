@@ -60,5 +60,13 @@ Rails.application.routes.draw do
     resources :ancustomers, only: [:create, :index, :edit, :update, :new]
   end
 
-  root to: "anproducts#index"
+  #root to: "anproducts#index"
+
+  #layouts and rendering
+  devise_for :nusers
+  resources :nproducts
+  resources :norders
+
+  root "nusers#homepage"
+  get 'homepage', to: "nusers#homepage"
 end
