@@ -1,7 +1,8 @@
 class NordersController < ApplicationController
-  #add callback mdthod
+  #add callbacks method
   before_action :set_norder, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: [:index, :show]
+  before_action :authenticate_nuser!
 
   def index
     @norders = Norder.all

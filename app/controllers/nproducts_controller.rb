@@ -1,7 +1,8 @@
 class NproductsController < ApplicationController
-  #add callbacks mwthods
+  #add callbacks methods
   before_action :set_nproduct, only: [:show, :edit, :update, :destroy]
   before_action :require_admin, except: [:index, :show]
+  before_action :authenticate_nuser!
 
   def index
     @nproducts = Nproduct.all
