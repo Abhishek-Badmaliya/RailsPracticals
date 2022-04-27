@@ -7,6 +7,7 @@
       <th> ID </th>
       <th> Name </th>
       <th> Email </th>
+      <th> Picture </th>
       <th> Actions </th>
     </tr>
   </thead>
@@ -16,12 +17,13 @@
         <td><%= newuser.id %></td>
         <td><%= newuser.name %></td>
         <td><%= newuser.email %></td>
+        <td><img src="<%= newuser.picture %>" class="img-responsive img-thumbnail" height="100px" width="100px"></td>
         <div>
           <td>
             <div class="btn-group" role="group">
-              <%= link_to 'Show', newuser_path(newuser), class: "text-decoration-none btn btn-info" %>
-              <%= link_to 'Edit', edit_newuser_path(newuser), class: "text-decoration-none btn btn-dark" %>
-              <%= button_to 'Delete', newuser_path(newuser), method: :delete, class: "btn btn-danger" %>
+              <%= link_to 'Show', newuser_path(newuser.id), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_newuser_path(newuser.id), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', newuser_path(newuser.id), method: :delete, class: "btn btn-danger" %>
             </div>
           </td>
         </div>

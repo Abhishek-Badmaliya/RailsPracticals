@@ -13,8 +13,9 @@ class NewusersController < ApplicationController
   def create
     @newuser = Newuser.new(newuser_params)
     if @newuser.save
+      NewuserMailer.with(newuser: @newuser).welcome_email.deliver_now
       flash[:notice] = "User's Details has been Added Successfully !"
-      redirect_to newusers_path
+      redirect_to newusers_path(@newuser)
     else
       render 'new'
     end
@@ -27,10 +28,11 @@ class NewusersController < ApplicationController
   end
 
   def update
-    @newuser = Newuser.find(params[:id])
+    old_email = @newuser.email
     if @newuser.update(newuser_params)
+      NewuserMailer.with(newuser: @newuser).update_email.deliver_now if old_email != @newuser.email
       flash[:notice] = "User's Records has been Updated Successfully !"
-      redirect_to newusers_path
+      redirect_to @newuser
     else
       render :edit
     end

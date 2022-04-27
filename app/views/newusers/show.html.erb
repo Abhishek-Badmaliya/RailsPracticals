@@ -1,4 +1,4 @@
-<div class = "container-fluid" >
+<div class = "container-fluid " >
   <h2 class = "text-center mt-4" >User Details</h2><hr>
   
   <p class = "lead" >
@@ -12,6 +12,10 @@
   <p class = "lead" >
     <label><strong>User Email : </strong></label>
     <%= @newuser.email %>
+  </p>
+  <p class = "lead" >
+    <label><strong>User Picture : </strong></label>
+    <%= image_tag @newuser.picture.url(:thumb), class:"img-responsive img-thumbnail"%>
   </p>
 
   <div class = "text-center">
