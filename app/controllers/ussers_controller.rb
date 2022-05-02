@@ -1,5 +1,4 @@
 class UssersController < ApplicationController
-
   #add callbacks
   before_action :set_usser, only: [:show, :edit, :update, :destroy]
   before_action :require_user, only: [:edit, :update]

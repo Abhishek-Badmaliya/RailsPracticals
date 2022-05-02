@@ -61,12 +61,13 @@
           </tr>
         </thead>
         <tbody>
-          <% Order.group(:customer_id).having(order_status:'booked').first(5).each do |s| %>
+          <% Order.where(order_status:"booked").group(:customer_id).count.sort_by(&:last).last(5).reverse.each do |order| %>
             <tr>
-              <td><%= Order.where(customer_id:s.customer_id).where(order_status:'booked').count %></td>
-              <td><%= s.customer.fname %> <%= s.customer.lname %></td>
-              <td><%= s.customer.email %></td>
-              <td><%= s.customer.phone_number %></td>
+              <% @customer = Customer.find_by(id: order[0]) %>
+              <td><%= order[1] %></td>
+              <td><%= @customer.fname %></td>
+              <td><%= @customer.email %></td>
+              <td><%= @customer.phone_number %></td>
             </tr>
           <% end %>   
         </tbody>
@@ -83,12 +84,13 @@
           </tr>
         </thead>
         <tbody>
-          <% Order.group(:customer_id).having(order_status:'cancelled').first(5).each do |s| %>
+          <% Order.where(order_status:"cancelled").group(:customer_id).count.sort_by(&:last).last(5).reverse.each do |order| %>
             <tr>
-              <td><%= Order.where(customer_id:s.customer_id).where(order_status:'cancelled').count %></td>
-              <td><%= s.customer.fname %> <%= s.customer.lname %></td>
-              <td><%= s.customer.email %></td>
-              <td><%= s.customer.phone_number %></td>
+              <% @customer = Customer.find_by(id: order[0]) %>
+              <td><%= order[1] %></td>
+              <td><%= @customer.fname %></td>
+              <td><%= @customer.email %></td>
+              <td><%= @customer.phone_number %></td>
             </tr>
           <% end %>   
         </tbody>

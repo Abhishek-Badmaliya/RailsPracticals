@@ -5,7 +5,7 @@ class EmployeesController < ApplicationController
       if Employee.find_by("email=?", params[:search])
         flash[:notice] = "Email is exists in this record!"
       else
-        flash[:notice] = "Email is not exists in this record!"
+        flash[:notice] = "Email does not exists in this record!"
       end
     end
   end
@@ -58,21 +58,19 @@ class EmployeesController < ApplicationController
   end
 
   def increase_order
-    Employee.find_in_batches(batch_size:10) do |employee|
-      employee.each do |e|
-        e.no_of_order+=1
-        e.save
-      end
+    employee = Employee.find_in_batches(batch_size:10)
+    employee.first.each do |e|
+      e.no_of_order+=1
+      e.save
     end
     redirect_to employees_path
   end
 
   def decrease_order
-    Employee.find_in_batches(batch_size:10) do |employee|
-      employee.each do |e|
-        e.no_of_order-=1
-        e.save
-      end
+    employee = Employee.find_in_batches(batch_size:10)
+    employee.first.each do |e|
+      e.no_of_order-=1
+      e.save
     end
     redirect_to employees_path
   end

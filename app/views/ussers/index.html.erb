@@ -6,7 +6,7 @@
       <div class="col-6 mt-4">
         <div class=" text-left mb-5">
           <div class="card-body text-white bg-dark mb-3">
-            <p class="card-title"><strong>User Name : </strong><%= link_to usser.user_name, usser_path(usser), class:"text-primary" %><p>
+            <p class="card-title"><strong>User Name : </strong><%= link_to usser.user_name, usser_path(usser), class:"text-primary text-decoration-none" %><p>
             <p class="card-text"><strong>User Email : </strong><%= usser.user_email%></p>          
             <p class="card-text"><strong>Events Created : </strong><%= usser.events.count%></p>     
           </div>

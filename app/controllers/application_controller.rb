@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #create method for nuser's role which is use protected 
-  protected
+  #create method for nuser's role which is use private
+  private
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
   end
