@@ -1,0 +1,41 @@
+<h2 class = "text-center mt-4" > List of Employees</h2><br>
+<%= link_to "Add New Employee", new_nemployee_path, class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> ID </th>
+      <th> Name </th>
+      <th> Email </th>
+      <th> DOB </th>
+      <th> Gender </th>
+      <th> Hobbies </th>
+      <th> Address </th>
+      <th> Contact </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @nemployees.each do |nemployee| %>
+      <tr>
+        <td><%= nemployee.id %></td>
+        <td><%= nemployee.employee_name %></td>
+        <td><%= nemployee.email %></td>
+        <td><%= nemployee.birth_date %></td>
+        <td><%= nemployee.gender %></td>
+        <td><%= nemployee.hobbies %></td>
+        <td><%= nemployee.naddresses[0].house_name %>, <%= nemployee.naddresses[0].street_name %>, <%= nemployee.naddresses[0].road %>, <%= nemployee.address %></td>
+        <td><%= nemployee.mobile_number %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', nemployee_path(nemployee), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_nemployee_path(nemployee), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', nemployee_path(nemployee), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

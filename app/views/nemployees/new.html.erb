@@ -1,0 +1,86 @@
+<div class = "container" >
+  <h2 class = "text-center mt-4" >Create a new Employee</h2>
+
+  <% if @nemployee.errors.any? %>
+    <h4> The following errors prevented the products details from being saved ! </h4>
+    <ul>
+      <% @nemployee.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model:@nemployee, local: true, data: {turbo: false}) do |f| %>
+    <div class = "field form-group" >
+      <strong><%= f.label :employee_name %></strong>
+      <%= f.text_field :employee_name, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :email %></strong>
+      <%= f.email_field :email, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :password %></strong>
+      <%= f.password_field :password, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :birth_date %></strong>
+      <%= f.date_field :birth_date, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :gender %> : </strong>
+      <%= f.label :gender_male, "Male" %>
+      <%= f.radio_button :gender, "Male" %>
+      <%= f.label :gender_female, "Female" %>
+      <%= f.radio_button :gender, "Female" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :hobbies %> : </strong>
+      <% Nemployee::HOBBIES.each do |key| %>
+        <%= f.check_box :hobbies, {multiple: true, checked:f.object.hobbies&.include?(key.to_s)}, key, nil %>
+        <%= f.label key %>
+      <% end %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :address %></strong>
+      <%= f.text_area :address, class:"form-control" %><br>
+      <%= f.fields_for :naddresses do |addresses_form| %>
+        <%= addresses_form.label :house_name, "House Name" %>
+        <%= addresses_form.text_field :house_name %><br><br>
+        <%= addresses_form.label :street_name, "Street Name"  %>
+        <%= addresses_form.text_field :street_name %><br><br>
+        <%= addresses_form.label :road, "Road Name :"  %>
+        <%= addresses_form.text_field :road %><br>
+      <% end %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :mobile_number %></strong>
+      <%= f.number_field :mobile_number, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :document %></strong>
+      <%= f.file_field :document, class:"form-control" %>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Save", class:"btn btn-success" %>
+      </div>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Cancel', { controller: 'nemployees', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

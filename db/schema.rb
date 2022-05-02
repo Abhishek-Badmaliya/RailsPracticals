@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_21_125809) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_25_100907) do
   create_table "addresses", force: :cascade do |t|
     t.string "usser_address"
     t.integer "usser_id"
@@ -148,6 +148,30 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_125809) do
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
   end
 
+  create_table "naddresses", force: :cascade do |t|
+    t.integer "nemployee_id", null: false
+    t.string "house_name"
+    t.string "street_name"
+    t.string "road"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["nemployee_id"], name: "index_naddresses_on_nemployee_id"
+  end
+
+  create_table "nemployees", force: :cascade do |t|
+    t.string "employee_name"
+    t.string "email"
+    t.string "password"
+    t.string "gender"
+    t.string "address"
+    t.string "mobile_number"
+    t.date "birth_date"
+    t.string "document"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "hobbies"
+  end
+
   create_table "norders", force: :cascade do |t|
     t.integer "nproduct_id", null: false
     t.integer "quantity"
@@ -233,5 +257,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_21_125809) do
 
   add_foreign_key "addresses", "ussers"
   add_foreign_key "events", "categories"
+  add_foreign_key "naddresses", "nemployees"
   add_foreign_key "norders", "nproducts"
 end
