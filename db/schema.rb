@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_25_100907) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_02_121910) do
   create_table "addresses", force: :cascade do |t|
     t.string "usser_address"
     t.integer "usser_id"
@@ -39,6 +39,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_25_100907) do
     t.string "product_name"
     t.string "product_description"
     t.decimal "product_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "arcomments", force: :cascade do |t|
+    t.string "comment_content"
+    t.string "date_of_comment"
+    t.integer "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_arcomments_on_article_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.date "release_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -172,6 +189,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_25_100907) do
     t.string "hobbies"
   end
 
+  create_table "newusers", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "picture"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "norders", force: :cascade do |t|
     t.integer "nproduct_id", null: false
     t.integer "quantity"
@@ -256,6 +281,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_25_100907) do
   end
 
   add_foreign_key "addresses", "ussers"
+  add_foreign_key "arcomments", "articles"
   add_foreign_key "events", "categories"
   add_foreign_key "naddresses", "nemployees"
   add_foreign_key "norders", "nproducts"
