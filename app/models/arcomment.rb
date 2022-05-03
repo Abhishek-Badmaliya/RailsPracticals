@@ -3,5 +3,5 @@ class Arcomment < ApplicationRecord
   belongs_to :article
 
   #add validation
-  validates :comment_content, :date_of_comment, presence :true
+  validates :comment_content, :date_of_comment, presence: true
 end

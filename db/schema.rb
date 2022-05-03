@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_121910) do
 
   create_table "arcomments", force: :cascade do |t|
     t.string "comment_content"
-    t.string "date_of_comment"
+    t.date "date_of_comment"
     t.integer "article_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

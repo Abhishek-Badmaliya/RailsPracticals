@@ -73,4 +73,15 @@ Rails.application.routes.draw do
   #routes for action view form helpers
   resources :nemployees
   get 'search', to: "nemployees#search"
+
+  #routes for rails api
+  namespace :api do
+    namespace :v1 do
+      get 'article_search', to: "articles#article_search"
+      get 'arcomment_search', to: "arcomments#arcomment_search"
+      resources :articles do
+        resources :arcomments
+      end
+    end
+  end
 end
