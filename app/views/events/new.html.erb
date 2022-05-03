@@ -15,38 +15,31 @@
       <strong><%= f.label :Event_Name%></strong>
       <%= f.text_field :name, class:"form-control" %>
     </div><br>
-
     <div class = "field form-group" >
       <strong><%= f.label :description%></strong>
       <%= f.text_field :description, class:"form-control" %>
     </div><br>
-
     <div class = "field form-group" >
       <strong><label>Event Date : </label></strong>
       <%= f.date_field :event_date, class:"form-control" %>
     </div><br>
-
     <div>
       <strong><label>Usser Name : </label></strong>
       <%= f.select :usser_id, Usser.all.map { |p| [p.user_name, p.id]}, class:"form-control" %>
     </div><br>
-
     <div>
       <strong><label>Event Category : </label></strong>
       <%= f.select :category_id, Category.all.map { |p| [p.category_name, p.id]}, class:"form-control" %>
     </div><br>
-
     <div align="center">
       <div class = "action" >
         <%= f.submit "Create", class:"btn btn-secondary" %>
       </div>
     </div><br>
-
     <div align="center">
       <div class = "field form-group" >
-        <%= link_to 'Cancel', { controller: 'events', action: 'index'} %>
+        <%= link_to 'Cancel', { controller: 'events', action: 'index'}, class:"text-decoration-none" %>
       </div>
     </div>
   <% end %>
-
 </div>

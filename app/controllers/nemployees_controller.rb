@@ -52,6 +52,9 @@ class NemployeesController < ApplicationController
       else
         @nemployees = Nemployee.where('employee_name LIKE ?', params[:query] + "%")
       end
+    else
+      flash[:alert] = "NO records found !!!"
+      redirect_to search_path
     end
   end
 

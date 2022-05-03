@@ -34,10 +34,9 @@
         <td><%= event.event_date %></td>
         <div>
           <td>
-            <%= link_to 'Show', event_path(event) %>
-            <%= link_to 'Edit', edit_event_path(event) %>
+            <%= link_to 'Show', event_path(event), class:"text-decoration-none" %>
+            <%= link_to 'Edit', edit_event_path(event), class:"text-decoration-none" %>
             <%= button_to 'Delete', event_path(event), class:"btn btn-danger",method: :delete %>
-
             <% if logged_in? %>
               <% if Enrollment.where("usser_id=? and event_id=?", current_user, event).blank? %>
                 <td><%= button_to "Enroll", ussers_enroll_path(id: session[:usser_id]), params: { event_id: event.id }, method: "get", class: "btn btn-success" %></td>
@@ -45,7 +44,6 @@
                 <td><%= button_to "Unenroll", ussers_unenroll_path(current_user), params: { event_id: event.id }, method: "get", class: "btn btn-danger" %></td>
               <% end %>
             <% end %>
-
           </td>
         </div>
       </tr>

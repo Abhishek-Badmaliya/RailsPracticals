@@ -46,7 +46,7 @@ class AnordersController < ApplicationController
     @anorder = Anorder.find(params[:id])
     if @anorder.destroy
       flash[:notice] = "Order's records Deleted Successfully !"
-      redirect_to anproduct_anorders_path
+      redirect_to anproduct_path(@anorder.anproduct)
     else
       flash[:notice] = "Oops, Deletion Operation Failed !"
     end

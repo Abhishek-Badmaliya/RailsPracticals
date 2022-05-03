@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   #create comment method
   def create
     @event = Event.find(params[:event_id]).comments.create("content"=>params[:content],"usser_id"=>current_user.id)
@@ -15,5 +14,4 @@ class CommentsController < ApplicationController
     @current_event = Event.find(params[:event_id])
     redirect_to event_path(@current_event)
   end
-
 end

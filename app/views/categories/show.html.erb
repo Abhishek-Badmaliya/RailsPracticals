@@ -1,10 +1,8 @@
 <div class = "container-fluid" ><br>
-
   <h2 class = "text-center mt-4" >Category Details</h2><hr><br>
   <p class = "lead" >
     <label><strong>Category Name : </strong></label>
     <%= @category.category_name %>  
   </p>
-  <%= link_to 'Back', { controller: 'categories', action: 'index'} %>
-
+  <%= link_to 'Back', { controller: 'categories', action: 'index'}, class:"text-decoration-none" %>
 </div>
