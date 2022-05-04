@@ -84,4 +84,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  #routes for rails test cases
+  resources :tproducts
 end

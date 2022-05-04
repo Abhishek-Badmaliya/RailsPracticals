@@ -1,0 +1,24 @@
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >Product Details</h2><hr>
+  
+  <p class = "lead" >
+    <label><strong>Product ID : </strong></label>
+    <%= @tproduct.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Name : </strong></label>
+    <%= @tproduct.product_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Product Price : </strong></label>
+    <%= @tproduct.price %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Description : </strong></label>
+    <%= @tproduct.description %>
+  </p>
+
+  <div class = "text-center">
+    <%= link_to 'Back', { controller: 'tproducts', action: 'index'}, class: "btn btn-primary" %>
+  </div>
+</div>
