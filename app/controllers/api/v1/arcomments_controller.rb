@@ -40,7 +40,7 @@ class Api::V1::ArcommentsController < ApplicationController
 
   #define search method for comment
   def arcomment_search
-    @arcomment = Arcomment.find_by(comment_content:params[:arcomment])
+    @arcomment = Arcomment.find_by(comment_content: params[:comment_content])
     if @arcomment
       render json: @arcomment
     else
