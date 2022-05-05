@@ -73,4 +73,7 @@ Rails.application.routes.draw do
   #routes for action view form helpers
   resources :nemployees
   get 'search', to: "nemployees#search"
+
+  #routes for action mailer basics
+  resources :newusers
 end
