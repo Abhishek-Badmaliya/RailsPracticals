@@ -1,0 +1,17 @@
+<h2 class="text-center mt-4">User's Profile</h2><hr>
+
+<div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-6 mt-4">
+        <div class=" text-center mb-5">
+          <div class="card-body text-dark bg-light mb-3">         
+            <p class="card-text"><%= image_tag @newuser.picture.url(:thumb), class:"img-responsive img-thumbnail" %></p>
+            <p class="card-title"><strong>User ID : </strong><%= @newuser.id  %><p>
+            <p class="card-title"><strong>User Name : </strong><%= @newuser.name  %><p>
+            <p class="card-text"><strong>User Email : </strong><%= @newuser.email %></p>
+            <p class="card-text"> <%= link_to 'Back', { controller: 'newusers', action: 'index'}, class: "btn btn-danger" %> </p>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
