@@ -74,7 +74,6 @@ Rails.application.routes.draw do
   resources :nemployees
   get 'search', to: "nemployees#search"
 
-<<<<<<< HEAD
   #routes for rails api
   namespace :api do
     namespace :v1 do
@@ -85,8 +84,6 @@ Rails.application.routes.draw do
       end
     end
   end
-=======
   #routes for action mailer basics
   resources :newusers
->>>>>>> ef496068199ce1fba11c2038a044ee8b31192892
 end
