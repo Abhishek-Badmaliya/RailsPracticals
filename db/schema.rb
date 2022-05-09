@@ -268,11 +268,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
   end
 
   create_table "tproducts", force: :cascade do |t|
+    t.integer "nuser_id", null: false
     t.string "product_name"
     t.float "price"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["nuser_id"], name: "index_tproducts_on_nuser_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -293,4 +295,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
   add_foreign_key "events", "categories"
   add_foreign_key "naddresses", "nemployees"
   add_foreign_key "norders", "nproducts"
+  add_foreign_key "tproducts", "nusers"
 end
