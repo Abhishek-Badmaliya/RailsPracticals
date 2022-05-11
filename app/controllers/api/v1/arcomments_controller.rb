@@ -40,9 +40,10 @@ class Api::V1::ArcommentsController < ApplicationController
 
   #define search method for comment
   def arcomment_search
-    @arcomment = Arcomment.find_by(comment_content: params[:comment_content])
-    if @arcomment
-      render json: @arcomment
+    @parameter = params[:comment_content]
+    @comment = Arcomment.where("lower(comment_content) LIKE :comment_content", comment_content: "%#{@parameter}%")
+    if @comment != [] 
+      render json: @comment
     else
       render json: "Record has been not found!"
     end

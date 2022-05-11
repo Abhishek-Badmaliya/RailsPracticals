@@ -87,4 +87,6 @@ Rails.application.routes.draw do
 
   #routes for rails test cases
   resources :tproducts
+  #routes for action mailer basics
+  resources :newusers
 end
