@@ -268,7 +268,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
   end
 
   create_table "tproducts", force: :cascade do |t|
-    t.integer "nuser_id", null: false
+    t.integer "nuser_id"
     t.string "product_name"
     t.float "price"
     t.text "description"
@@ -295,5 +295,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
   add_foreign_key "events", "categories"
   add_foreign_key "naddresses", "nemployees"
   add_foreign_key "norders", "nproducts"
-  add_foreign_key "tproducts", "nusers"
 end

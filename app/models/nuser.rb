@@ -5,5 +5,5 @@ class Nuser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #add association      
-  has_many :troducts
+  has_many :tproducts
 end
