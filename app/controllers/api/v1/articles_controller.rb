@@ -40,8 +40,9 @@ class Api::V1::ArticlesController < ApplicationController
 
   #define search method
   def article_search
-    @article = Article.find_by(title:params[:title])
-    if @article
+    @parameter = params[:title]
+    @article = Article.where("lower(title) LIKE :title", title: "%#{@parameter}%")
+    if @article != []
       render json: @article
     else
       render json: "Record's has been not found!"
