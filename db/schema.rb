@@ -43,6 +43,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_130006) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "arcomments", force: :cascade do |t|
+    t.string "comment_content"
+    t.date "date_of_comment"
+    t.integer "article_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["article_id"], name: "index_arcomments_on_article_id"
+  end
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "body"
+    t.date "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "authors", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -264,6 +281,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_26_130006) do
   end
 
   add_foreign_key "addresses", "ussers"
+  add_foreign_key "arcomments", "articles"
   add_foreign_key "events", "categories"
   add_foreign_key "naddresses", "nemployees"
   add_foreign_key "norders", "nproducts"
