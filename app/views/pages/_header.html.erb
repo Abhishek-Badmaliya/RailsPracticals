@@ -77,6 +77,15 @@
         </li>
 
         <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">   
+            View Mailer
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><%= link_to 'Users', newusers_path, class:"dropdown-item" %></li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Test Cases
           </a>
@@ -91,11 +100,14 @@
               <li><%= link_to 'Sign in', new_nuser_session_path, class:"dropdown-item" %></li>
             <% end %>
           </ul>
-        </li>        
-            View Mailer
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">   
+            Js in Rails
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><%= link_to 'Users', newusers_path, class:"dropdown-item" %></li>
+            <li><%= link_to 'Users', jusers_path, class:"dropdown-item" %></li>
           </ul>
         </li>
 

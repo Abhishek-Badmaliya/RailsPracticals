@@ -89,4 +89,7 @@ Rails.application.routes.draw do
   resources :tproducts
   #routes for action mailer basics
   resources :newusers
+
+  #routes for javascript in rails 
+  resources :jusers
 end
