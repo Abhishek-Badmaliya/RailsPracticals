@@ -2,7 +2,7 @@
   <h2 class = "text-center mt-4" >Edit an User</h2>
 
   <% if @juser.errors.any? %>
-    <h4> The following errors prevented the products details from being saved ! </h4>
+    <h5> The following errors prevented the products details from being saved ! </h5>
     <ul>
       <% @juser.errors.full_messages.each do |msg| %>
         <li> <%= msg %> </li>
@@ -44,7 +44,7 @@
 
     <div class="text-center">
       <div class = "action" >
-        <%= f.submit "Edit", class: "btn btn-success" %>
+        <%= f.submit "Edit", data: { disable_with: "Saving..." }, class: "btn btn-success" %>
       </div>
     </div><br>
 

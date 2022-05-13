@@ -1,0 +1,36 @@
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >User Details</h2><hr>
+  
+  <p class = "lead" >
+    <label><strong>User ID : </strong></label>
+    <%= @juser.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>First Name : </strong></label>
+    <%= @juser.first_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Last Name : </strong></label>
+    <%= @juser.last_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Email : </strong></label>
+    <%= @juser.email %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Subscription : </strong></label>
+    <%= @juser.subscription %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Subscription Email : </strong></label>
+    <%= @juser.subscription_email %>
+  </p>
+
+  <div class = "text-center">
+    <div class="btn-group" role="group">
+      <%= link_to 'Edit', edit_juser_path(@juser), class: "text-decoration-none btn btn-dark" %>
+      <%= button_to 'Delete', juser_path(@juser.id), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger" %>
+      <%= link_to 'Back', { controller: 'jusers', action: 'index'}, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>
