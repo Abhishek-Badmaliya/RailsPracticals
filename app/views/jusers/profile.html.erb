@@ -1,16 +1,13 @@
 <div class = "container" >
-  <h2 class = "text-center mt-4" >Update Profile</h2>
+  <h2 class = "text-center mt-4" >User Profile Page</h2>
 
-  <% if @juser.errors.any? %>
-    <h5> The following errors prevented the users profile from being saved ! </h5>
-    <ul>
-      <% @juser.errors.full_messages.each do |msg| %>
-        <li> <%= msg %> </li>
-      <% end %>
-    </ul>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p class="text-danger"><%= error %></p>
+    <% end %>
   <% end %>
 
-  <%= form_with(model:@juser, local: true, data: {turbo: false}) do |f| %>
+  <%= form_with(model:@juser, method: :patch, url:update_profile_juser_path, local: false, data: {turbo: false}) do |f| %>
     
     <div class = "field form-group" >
       <strong><%= f.label :first_name %></strong>
@@ -22,19 +19,19 @@
       <%= f.text_field :last_name, class:"form-control" %>
     </div><br>
 
-    <div class = "field form-group", id = "email" >
+    <div class = "field form-group", id = "user_email" >
       <strong><%= f.label :user_email %></strong>
-      <%= f.email_field :email, class:"form-control", oninput: "password()" %>
+      <%= f.email_field :email, class:"form-control", oninput: "show_pass()" %>
     </div><br>
 
-    <div class = "field form-group", id = "password" >
+    <div class = "field form-group", id = "user_password" >
       <strong><%= f.label :password %></strong>
       <%= f.password_field :password, class:"form-control" %>
     </div><br>
 
     <div class = "field form-group", id = "subscribe" >
       <strong><%= f.label :subscription %></strong>
-      <%= f.check_box :subscription %>
+      <%= f.check_box :subscription, onclick: "show_sub_email(this)" %>
     </div><br>
 
     <div class = "field form-group", id = "sub_email" >
@@ -48,6 +45,11 @@
       </div>
     </div><br>
 
+    <div class="text-center">
+    <div class = "field form-group" >
+      <%= link_to 'Cancel', { controller: 'jusers', action: 'index'}, class: "btn btn-danger" %>
+    </div>
+  </div>
   <% end %>
 
   <div class="text-center", id = "juser">
@@ -55,5 +57,19 @@
 </div>
 
 <script>
-  
+  function show_pass() {
+    var pswd = document.getElementById("user_password");
+    if (pswd.style.display === "none") {
+      pswd.style.display = "block";
+    }    
+  }
+
+  function show_sub_email(SubscriptionCheck) {
+    var submail = document.getElementById("sub_email");
+    if (SubscriptionCheck.checked) {
+      submail.style.display = "block"
+    } else {
+      submail.style.display = "none"
+    }
+  }
 </script>

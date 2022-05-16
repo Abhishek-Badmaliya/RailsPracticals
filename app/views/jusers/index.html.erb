@@ -25,9 +25,11 @@
         <div>
           <td>
             <div class="btn-group" role="group">
+              <%= link_to 'Profile', profile_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
               <%= link_to 'Show', juser_path(juser.id), class: "text-decoration-none btn btn-info" %>
               <%= link_to 'Edit', edit_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
               <%= button_to 'Delete', juser_path(juser.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <%= link_to 'ChPass', change_password_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
             </div>
           </td>
         </div>

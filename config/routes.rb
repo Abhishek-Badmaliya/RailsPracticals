@@ -91,5 +91,12 @@ Rails.application.routes.draw do
   resources :newusers
 
   #routes for javascript in rails 
-  resources :jusers
+  resources :jusers do
+    member do
+      get 'profile', to: "jusers#profile"
+      patch 'update_profile', to: "jusers#update_profile"
+      get 'change_password', to: "jusers#change_password"
+      patch 'update_password', to: "jusers#update_password"
+    end
+  end
 end

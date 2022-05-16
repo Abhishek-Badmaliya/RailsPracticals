@@ -40,6 +40,40 @@ class JusersController < ApplicationController
     redirect_to jusers_path
   end
 
+  def profile
+    @juser = Juser.find(params[:id])
+  end
+
+  def update_profile
+    @juser = Juser.find(params[:id])
+    respond_to do |format|
+      if @juser.update(juser_params)
+        flash[:notice] = "User Profile has been Updated Successfully!"
+        format.js
+      else
+        flash[:errors] = @juser.errors.full_messages
+        format.js
+      end
+    end
+  end
+
+  def change_password
+    @juser = Juser.find(params[:id])
+  end
+
+  def update_password
+    @juser = Juser.find(params[:id])
+    respond_to do |format|
+      if @juser.update_attribute(:password, params[:juser][:password])
+        flash[:notice] = "User Password has been Updated Successfully!"
+        redirect_to jusers_path(@juser)
+      else
+        flash[:errors] = @juser.errors.full_messages
+      end
+      format.js
+    end
+  end
+
   private
     def set_juser
       @juser = Juser.find(params[:id])
