@@ -5,5 +5,5 @@ class Nuser < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   #add association      
-  has_many :tproducts
+  has_many :tproducts, dependent: :destroy
 end
