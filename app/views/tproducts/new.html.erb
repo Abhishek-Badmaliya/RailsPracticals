@@ -1,0 +1,42 @@
+<div class = "container" >
+  <h2 class = "text-center mt-4" >Create a new Product</h2>
+
+  <% if @tproduct.errors.any? %>
+    <h4> The following errors prevented the products details from being saved ! </h4>
+    <ul>
+      <% @tproduct.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_with(model:@tproduct, local: true, data: {turbo: false}) do |f| %>
+    <div class = "field form-group" >
+      <strong><%= f.label :product_name %></strong>
+      <%= f.text_field :product_name, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_price %></strong>
+      <%= f.number_field :price, class:"form-control" %>
+    </div><br>
+
+    <div class = "field form-group" >
+      <strong><%= f.label :product_description %></strong>
+      <%= f.text_area :description, class:"form-control" %>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "action" >
+        <%= f.submit "Save", class:"btn btn-success" %>
+      </div>
+    </div><br>
+
+    <div class="text-center">
+      <div class = "field form-group" >
+        <%= link_to 'Cancel', { controller: 'tproducts', action: 'index'}, class: "btn btn-danger" %>
+      </div>
+    </div>
+  <% end %>
+  
+</div>

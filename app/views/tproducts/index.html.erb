@@ -1,0 +1,34 @@
+<h2 class = "text-center mt-4" > List of Products</h2><br>
+
+<%= link_to "Add New Product", new_tproduct_path, method: 'get', class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> Product ID </th>
+      <th> Product Name </th>
+      <th> Product Price </th>
+      <th> Description </th>
+      <th> Actions </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tproducts.each do |tproduct| %>
+      <tr>
+        <td><%= tproduct.id %></td>
+        <td><%= tproduct.product_name %></td>
+        <td><%= tproduct.price %></td>
+        <td><%= tproduct.description %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Show', tproduct_path(tproduct), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_tproduct_path(tproduct), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', tproduct_path(tproduct), method: :delete, class: "btn btn-danger" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
