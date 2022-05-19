@@ -1,0 +1,39 @@
+<h2 class = "text-center mt-4" > List of Users</h2><br>
+<%= link_to "Add New User", new_juser_path, class:"btn btn-secondary" %><br><br>
+
+<table class = "table table-bordered">
+  <thead class = "table-light text-center">
+    <tr>
+      <th> ID </th>
+      <th> First Name </th>
+      <th> Last Name </th>
+      <th> Email </th>
+      <th> Subscription </th>
+      <th> Subscription Email </th>
+      <th> Action </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @jusers.each do |juser| %>
+      <tr>
+        <td><%= juser.id %></td>
+        <td><%= juser.first_name %></td>
+        <td><%= juser.last_name %></td>
+        <td><%= juser.email %></td>
+        <td><%= juser.subscription %></td>
+        <td><%= juser.subscription_email %></td>
+        <div>
+          <td>
+            <div class="btn-group" role="group">
+              <%= link_to 'Profile', profile_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
+              <%= link_to 'Show', juser_path(juser.id), class: "text-decoration-none btn btn-info" %>
+              <%= link_to 'Edit', edit_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
+              <%= button_to 'Delete', juser_path(juser.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+              <%= link_to 'ChPass', change_password_juser_path(juser.id), class: "text-decoration-none btn btn-dark" %>
+            </div>
+          </td>
+        </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

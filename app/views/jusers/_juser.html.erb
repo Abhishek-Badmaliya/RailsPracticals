@@ -1,0 +1,44 @@
+<div>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p class="text-danger"><%= error %></p>
+    <% end %>
+  <% end %>
+</div>
+
+<div class = "container-fluid" >
+  <h2 class = "text-center mt-4" >User Details</h2><hr>
+  
+  <p class = "lead" >
+    <label><strong>User ID : </strong></label>
+    <%= @juser.id %>
+  </p>
+  <p class = "lead" >
+    <label><strong>First Name : </strong></label>
+    <%= @juser.first_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Last Name : </strong></label>
+    <%= @juser.last_name %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Email : </strong></label>
+    <%= @juser.email %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Password : </strong></label>
+    <%= @juser.password %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Subscription : </strong></label>
+    <%= @juser.subscription %>
+  </p>
+  <p class = "lead" >
+    <label><strong>Subscription Email : </strong></label>
+    <%= @juser.subscription_email %>
+  </p>
+
+  <div class = "text-center">
+    <%= link_to 'Back', { controller: 'jusers', action: 'index'}, class: "btn btn-primary" %>
+  </div>
+</div>

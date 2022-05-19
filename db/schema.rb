@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema[7.0].define(version: 2022_05_12_083501) do
+=======
 ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
+>>>>>>> 7ca7c40c41217a75d55516bd09d6b9be3bcacf74
   create_table "addresses", force: :cascade do |t|
     t.string "usser_address"
     t.integer "usser_id"
@@ -163,6 +167,17 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_101154) do
     t.string "imageable_type"
     t.integer "imageable_id"
     t.index ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id"
+  end
+
+  create_table "jusers", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "password"
+    t.boolean "subscription"
+    t.string "subscription_email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "naddresses", force: :cascade do |t|
