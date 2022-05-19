@@ -1,3 +1,11 @@
+<div>
+  <% if flash[:errors] %>
+    <% flash[:errors].each do |error| %>
+      <p class="text-danger"><%= error %></p>
+    <% end %>
+  <% end %>
+</div>
+
 <div class = "container-fluid" >
   <h2 class = "text-center mt-4" >User Details</h2><hr>
   
@@ -18,6 +26,10 @@
     <%= @juser.email %>
   </p>
   <p class = "lead" >
+    <label><strong>Password : </strong></label>
+    <%= @juser.password %>
+  </p>
+  <p class = "lead" >
     <label><strong>Subscription : </strong></label>
     <%= @juser.subscription %>
   </p>
@@ -27,10 +39,6 @@
   </p>
 
   <div class = "text-center">
-    <div class="btn-group" role="group">
-      <%= link_to 'Edit', edit_juser_path(@juser), class: "text-decoration-none btn btn-dark" %>
-      <%= button_to 'Delete', juser_path(@juser.id), method: :delete, data: { confirm: "Are you sure ?" }, class: "btn btn-danger" %>
-      <%= link_to 'Back', { controller: 'jusers', action: 'index'}, class: "btn btn-primary" %>
-    </div>
+    <%= link_to 'Back', { controller: 'jusers', action: 'index'}, class: "btn btn-primary" %>
   </div>
 </div>

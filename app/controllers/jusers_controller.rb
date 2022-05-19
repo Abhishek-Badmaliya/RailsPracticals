@@ -49,11 +49,10 @@ class JusersController < ApplicationController
     respond_to do |format|
       if @juser.update(juser_params)
         flash[:notice] = "User Profile has been Updated Successfully!"
-        format.js
       else
         flash[:errors] = @juser.errors.full_messages
-        format.js
       end
+      format.js
     end
   end
 
@@ -66,9 +65,10 @@ class JusersController < ApplicationController
     respond_to do |format|
       if @juser.update_attribute(:password, params[:juser][:password])
         flash[:notice] = "User Password has been Updated Successfully!"
-        redirect_to jusers_path(@juser)
+        redirect_to jusers_path
       else
         flash[:errors] = @juser.errors.full_messages
+        redirect_to update_password_juser_path(@juser)
       end
       format.js
     end
